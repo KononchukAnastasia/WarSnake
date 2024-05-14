@@ -13,7 +13,6 @@ class Background: SKSpriteNode {
         let background = Background(imageNamed: "background")
         background.position = point
         background.zPosition = 0
-        
         return background
     }
 }

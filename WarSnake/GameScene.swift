@@ -7,16 +7,30 @@
 
 import SpriteKit
 import GameplayKit
-import CoreMotion
 
 class GameScene: SKScene {
     
-    let motionManager = CMMotionManager()
-    var xAcceleration: CGFloat = 0
-    var player: SKSpriteNode!
+    var player: PlayerSnake!
     
     override func didMove(to view: SKView) {
+        configureStartScene()
+        spawnFlower()
+        player.performСrawl()
+    }
+    
+    fileprivate func spawnFlower() {
+        let spawnFlowerWait = SKAction.wait(forDuration: 1)
+        let spawnFlowerAction = SKAction.run {
+            let flower = Flower.populateFlower(at: nil)
+            self.addChild(flower)
+        }
         
+        let spawnFlowerSequence = SKAction.sequence([spawnFlowerWait, spawnFlowerAction])
+        let spawnFlowerForever = SKAction.repeatForever(spawnFlowerSequence)
+        run(spawnFlowerForever)
+    }
+    
+    fileprivate func configureStartScene() {
         let screenCenterPoint = CGPoint(
             x: self.size.width / 2,
             y: self.size.height / 2
@@ -27,41 +41,26 @@ class GameScene: SKScene {
         self.addChild(background)
         
         let screen = UIWindow.bounds
-        for _ in 1...5 {
-            let x: CGFloat = CGFloat(
-                GKRandomSource.sharedRandom()
-                    .nextInt(upperBound: Int(screen.size.width))
-            )
-            let y: CGFloat = CGFloat(
-                GKRandomSource.sharedRandom()
-                    .nextInt(upperBound: Int(screen.size.height))
-            )
             
-            let flower = Flower.populateFlower(at: CGPoint(x: x, y: y))
-            self.addChild(flower)
-        }
+        let flower1 = Flower.populateFlower(at: CGPoint(x: 100, y: 200))
+        self.addChild(flower1)
+        
+        let flower2 = Flower.populateFlower(at: CGPoint(x: self.size.width - 100, y: self.size.height - 200))
+        self.addChild(flower2)
+        
         
         player = PlayerSnake.populate(at: CGPoint(x: screen.size.width / 2, y: 130))
         self.addChild(player)
-        
-        motionManager.accelerometerUpdateInterval = 0.2
-        motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { data, error in
-            if let data = data {
-                let acceleration = data.acceleration
-                self.xAcceleration = acceleration.x * 0.7 + self.xAcceleration * 0.3
-            }
-        }
     }
     
     override func didSimulatePhysics() {
-        super.didSimulatePhysics()
         
-        player.position.x += xAcceleration * 50
+        player.checkPozition()
         
-        if player.position.x < -40 {
-            player.position.x = self.size.width + 40
-        } else if player.position.x > self.size.width + 40 {
-            player.position.x = -40
+        enumerateChildNodes(withName: "backgroundSprite") { node, stop in
+            if node.position.y < -100 {
+                node.removeFromParent()
+            }
         }
     }
 }
