@@ -16,6 +16,8 @@
 		B5ABEE9E2BF23CF600756558 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABEE9D2BF23CF600756558 /* Background.swift */; };
 		B5ABEEA02BF25F5700756558 /* Flower.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABEE9F2BF25F5700756558 /* Flower.swift */; };
 		B5ABEEA22BF2682C00756558 /* Extension + UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABEEA12BF2682C00756558 /* Extension + UIWindow.swift */; };
+		B5ABEEA42BF33D9100756558 /* PlayerSnake.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABEEA32BF33D9100756558 /* PlayerSnake.swift */; };
+		B5ABEEA62BF3400400756558 /* playerSnake.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B5ABEEA52BF3400400756558 /* playerSnake.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		B5ABEE9D2BF23CF600756558 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		B5ABEE9F2BF25F5700756558 /* Flower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flower.swift; sourceTree = "<group>"; };
 		B5ABEEA12BF2682C00756558 /* Extension + UIWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIWindow.swift"; sourceTree = "<group>"; };
+		B5ABEEA32BF33D9100756558 /* PlayerSnake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSnake.swift; sourceTree = "<group>"; };
+		B5ABEEA52BF3400400756558 /* playerSnake.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = playerSnake.atlas; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,10 +67,12 @@
 			children = (
 				B5ABEE862BF2385F00756558 /* AppDelegate.swift */,
 				B5ABEE8C2BF2385F00756558 /* GameScene.swift */,
+				B5ABEEA32BF33D9100756558 /* PlayerSnake.swift */,
 				B5ABEE9F2BF25F5700756558 /* Flower.swift */,
 				B5ABEE9D2BF23CF600756558 /* Background.swift */,
 				B5ABEEA12BF2682C00756558 /* Extension + UIWindow.swift */,
 				B5ABEE8E2BF2385F00756558 /* GameViewController.swift */,
+				B5ABEEA52BF3400400756558 /* playerSnake.atlas */,
 				B5ABEE902BF2385F00756558 /* Main.storyboard */,
 				B5ABEE932BF2386200756558 /* Assets.xcassets */,
 				B5ABEE952BF2386200756558 /* LaunchScreen.storyboard */,
@@ -135,6 +141,7 @@
 				B5ABEE922BF2385F00756558 /* Main.storyboard in Resources */,
 				B5ABEE942BF2386200756558 /* Assets.xcassets in Resources */,
 				B5ABEE972BF2386200756558 /* LaunchScreen.storyboard in Resources */,
+				B5ABEEA62BF3400400756558 /* playerSnake.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +154,7 @@
 			files = (
 				B5ABEEA02BF25F5700756558 /* Flower.swift in Sources */,
 				B5ABEE8D2BF2385F00756558 /* GameScene.swift in Sources */,
+				B5ABEEA42BF33D9100756558 /* PlayerSnake.swift in Sources */,
 				B5ABEE8F2BF2385F00756558 /* GameViewController.swift in Sources */,
 				B5ABEE872BF2385F00756558 /* AppDelegate.swift in Sources */,
 				B5ABEE9E2BF23CF600756558 /* Background.swift in Sources */,
@@ -310,6 +318,7 @@
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -341,6 +350,7 @@
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
