@@ -16,10 +16,11 @@ final class Flower: SKSpriteNode {
         flower.setScale(randomScaleFactor)
         flower.position = point ?? randomPoint()
         flower.zPosition = 1
-        flower.name = "backgroundSprite"
+        flower.name = "Sprite"
         flower.anchorPoint = CGPoint(x: 0.5, y: 1.0)
         flower.run(rotateForRandomAngle())
         flower.run(move(from: flower.position))
+        flower.alpha = 0.5
         return flower
     }
     
