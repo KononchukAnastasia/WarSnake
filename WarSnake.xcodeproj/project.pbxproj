@@ -21,8 +21,11 @@
 		B5ABEEA22BF2682C00756558 /* Extension + UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABEEA12BF2682C00756558 /* Extension + UIWindow.swift */; };
 		B5ABEEA42BF33D9100756558 /* PlayerSnake.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABEEA32BF33D9100756558 /* PlayerSnake.swift */; };
 		B5ABEEA62BF3400400756558 /* playerSnake.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B5ABEEA52BF3400400756558 /* playerSnake.atlas */; };
+		B5B9C89F2BF787D4003836AB /* Enemy2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B5B9C89E2BF787D4003836AB /* Enemy2.atlas */; };
 		B5EA22A12BF656DA00E945BE /* BluePowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA22A02BF656DA00E945BE /* BluePowerUp.swift */; };
 		B5EA22A32BF6570F00E945BE /* YellowPowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA22A22BF6570F00E945BE /* YellowPowerUp.swift */; };
+		B5EA22A52BF759F600E945BE /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA22A42BF759F600E945BE /* Enemy.swift */; };
+		B5EA22A72BF75A7E00E945BE /* Enemy1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B5EA22A62BF75A7E00E945BE /* Enemy1.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,8 +44,11 @@
 		B5ABEEA12BF2682C00756558 /* Extension + UIWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIWindow.swift"; sourceTree = "<group>"; };
 		B5ABEEA32BF33D9100756558 /* PlayerSnake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSnake.swift; sourceTree = "<group>"; };
 		B5ABEEA52BF3400400756558 /* playerSnake.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = playerSnake.atlas; sourceTree = SOURCE_ROOT; };
+		B5B9C89E2BF787D4003836AB /* Enemy2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Enemy2.atlas; sourceTree = SOURCE_ROOT; };
 		B5EA22A02BF656DA00E945BE /* BluePowerUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluePowerUp.swift; sourceTree = "<group>"; };
 		B5EA22A22BF6570F00E945BE /* YellowPowerUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellowPowerUp.swift; sourceTree = "<group>"; };
+		B5EA22A42BF759F600E945BE /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
+		B5EA22A62BF75A7E00E945BE /* Enemy1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Enemy1.atlas; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +84,7 @@
 				B5ABEE862BF2385F00756558 /* AppDelegate.swift */,
 				B5ABEE8C2BF2385F00756558 /* GameScene.swift */,
 				B5ABEEA32BF33D9100756558 /* PlayerSnake.swift */,
+				B5EA22A42BF759F600E945BE /* Enemy.swift */,
 				B5ABEE9F2BF25F5700756558 /* Flower.swift */,
 				B5520A512BF63FF500E09B0D /* PowerUp.swift */,
 				B5EA22A22BF6570F00E945BE /* YellowPowerUp.swift */,
@@ -85,6 +92,8 @@
 				B5ABEE9D2BF23CF600756558 /* Background.swift */,
 				B5ABEEA12BF2682C00756558 /* Extension + UIWindow.swift */,
 				B5ABEE8E2BF2385F00756558 /* GameViewController.swift */,
+				B5EA22A62BF75A7E00E945BE /* Enemy1.atlas */,
+				B5B9C89E2BF787D4003836AB /* Enemy2.atlas */,
 				B53975172BF6521500885D17 /* YellowPowerUp.atlas */,
 				B5520A532BF641E700E09B0D /* BluePowerUp.atlas */,
 				B5ABEEA52BF3400400756558 /* playerSnake.atlas */,
@@ -158,7 +167,9 @@
 				B5ABEE942BF2386200756558 /* Assets.xcassets in Resources */,
 				B5ABEE972BF2386200756558 /* LaunchScreen.storyboard in Resources */,
 				B53975182BF6521500885D17 /* YellowPowerUp.atlas in Resources */,
+				B5EA22A72BF75A7E00E945BE /* Enemy1.atlas in Resources */,
 				B5ABEEA62BF3400400756558 /* playerSnake.atlas in Resources */,
+				B5B9C89F2BF787D4003836AB /* Enemy2.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +183,7 @@
 				B5ABEEA02BF25F5700756558 /* Flower.swift in Sources */,
 				B5ABEE8D2BF2385F00756558 /* GameScene.swift in Sources */,
 				B5520A522BF63FF500E09B0D /* PowerUp.swift in Sources */,
+				B5EA22A52BF759F600E945BE /* Enemy.swift in Sources */,
 				B5ABEEA42BF33D9100756558 /* PlayerSnake.swift in Sources */,
 				B5EA22A32BF6570F00E945BE /* YellowPowerUp.swift in Sources */,
 				B5EA22A12BF656DA00E945BE /* BluePowerUp.swift in Sources */,

@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+final class GameScene: SKScene {
     
     var player: PlayerSnake!
     
@@ -17,9 +17,46 @@ class GameScene: SKScene {
         spawnFlower()
         player.performСrawl()
         spawnPowerUp()
+//        spawnEnemy(count: 5)
+        spawnEnemies()
     }
     
-    fileprivate func spawnPowerUp() {
+    private func spawnEnemies() {
+        let waitAction = SKAction.wait(forDuration: 3.0)
+        let spawnSpiralAction = SKAction.run { [unowned self] in
+            self.spawnSpiralOfEnemies()
+        }
+        
+        self.run(SKAction.repeatForever(SKAction.sequence([waitAction, spawnSpiralAction])))
+    }
+    
+    private func spawnSpiralOfEnemies() {
+           let enemyTextureAtlas1 = SKTextureAtlas(named: "Enemy1")
+           let enemyTextureAtlas2 = SKTextureAtlas(named: "Enemy2")
+           SKTextureAtlas.preloadTextureAtlases([enemyTextureAtlas1, enemyTextureAtlas2]) { [unowned self] in
+                
+               let randomNumber = Int(arc4random_uniform(2))
+               let arrayOfAtlases = [enemyTextureAtlas1, enemyTextureAtlas2]
+               let textureAtlas = arrayOfAtlases[randomNumber]
+               
+               let waitAction = SKAction.wait(forDuration: 1.0)
+               let spawnEnemy = SKAction.run { [unowned self] in
+                   let textureNames = textureAtlas.textureNames.sorted()
+                   let texture = textureAtlas.textureNamed(textureNames[0])
+                   let enemy = Enemy(enemyTexture: texture)
+                   enemy.position = CGPoint(x: self.size.width / 2, y: self.size.height + 110)
+                   self.addChild(enemy)
+                   enemy.flySpiral()
+               }
+               
+               let spawnAction = SKAction.sequence([waitAction, spawnEnemy])
+               let repeatAction = SKAction.repeat(spawnAction, count: 3)
+               
+               self.run(repeatAction)
+           }
+       }
+    
+    private func spawnPowerUp() {
         let spawnAction = SKAction.run {
             let randomNumber = Int(arc4random_uniform(2))
             let powerUp = randomNumber == 1 ? BluePowerUp() : YellowPowerUp()
@@ -36,7 +73,7 @@ class GameScene: SKScene {
         self.run(SKAction.repeatForever(SKAction.sequence([spawnAction, waitAction])))
     }
     
-    fileprivate func spawnFlower() {
+    private func spawnFlower() {
         let spawnFlowerWait = SKAction.wait(forDuration: 1)
         let spawnFlowerAction = SKAction.run {
             let flower = Flower.populateFlower(at: nil)
@@ -48,7 +85,7 @@ class GameScene: SKScene {
         run(spawnFlowerForever)
     }
     
-    fileprivate func configureStartScene() {
+    private func configureStartScene() {
         let screenCenterPoint = CGPoint(
             x: self.size.width / 2,
             y: self.size.height / 2
@@ -67,7 +104,7 @@ class GameScene: SKScene {
         self.addChild(flower2)
         
         
-        player = PlayerSnake.populate(at: CGPoint(x: screen.size.width / 2, y: 130))
+        player = PlayerSnake.populate(at: CGPoint(x: screen.size.width / 2, y: 90))
         self.addChild(player)
     }
     

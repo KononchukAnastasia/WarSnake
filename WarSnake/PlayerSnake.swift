@@ -8,7 +8,7 @@
 import SpriteKit
 import CoreMotion
 
-class PlayerSnake: SKSpriteNode {
+final class PlayerSnake: SKSpriteNode {
     let motionManager = CMMotionManager()
     var xAcceleration: CGFloat = 0
     let screenSize = CGSize(width: UIWindow.bounds.width, height: UIWindow.bounds.height)
@@ -17,7 +17,7 @@ class PlayerSnake: SKSpriteNode {
     static func populate(at point: CGPoint) -> PlayerSnake {
         let playerSnakeTexture = SKTexture(imageNamed: "snake4")
         let playerSnake = PlayerSnake(texture: playerSnakeTexture)
-        playerSnake.setScale(0.5)
+        playerSnake.setScale(0.3)
         playerSnake.position = point
         playerSnake.zPosition = 20
         return playerSnake
@@ -26,10 +26,10 @@ class PlayerSnake: SKSpriteNode {
     func checkPozition() {
         self.position.x += xAcceleration * 50
         
-        if self.position.x < -40 {
-            self.position.x = screenSize.width + 40
-        } else if self.position.x > screenSize.width + 40 {
-            self.position.x = -40
+        if self.position.x < -20 {
+            self.position.x = screenSize.width + 20
+        } else if self.position.x > screenSize.width + 20 {
+            self.position.x = -20
         }
     }
     
@@ -37,7 +37,7 @@ class PlayerSnake: SKSpriteNode {
         playingAnimationFillArray {
             let snakeAnimationAction = SKAction.animate(
                 with: self.moveTextureArrayAnimation,
-                timePerFrame: 0.1,
+                timePerFrame: 0.15,
                 resize: true,
                 restore: false
             )
@@ -55,7 +55,7 @@ class PlayerSnake: SKSpriteNode {
         }
     }
     
-    fileprivate func playingAnimationFillArray(completion: @escaping () -> Void) {
+    private func playingAnimationFillArray(completion: @escaping () -> Void) {
         SKTextureAtlas.preloadTextureAtlases([SKTextureAtlas(named: "playerSnake")]) { [unowned self] in
             self.moveTextureArrayAnimation = {
                 var array = [SKTexture]()
