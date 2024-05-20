@@ -21,6 +21,13 @@ final class PlayerSnake: SKSpriteNode {
         playerSnake.setScale(0.3)
         playerSnake.position = point
         playerSnake.zPosition = 40
+        
+        playerSnake.physicsBody = SKPhysicsBody(texture: playerSnakeTexture, alphaThreshold: 0.5, size: playerSnake.size)
+        playerSnake.physicsBody?.isDynamic = false
+        playerSnake.physicsBody?.categoryBitMask = BitMaskCategory.player
+        playerSnake.physicsBody?.collisionBitMask = BitMaskCategory.enemy | BitMaskCategory.powerUp
+        playerSnake.physicsBody?.contactTestBitMask = BitMaskCategory.enemy | BitMaskCategory.powerUp
+        
         return playerSnake
     }
     

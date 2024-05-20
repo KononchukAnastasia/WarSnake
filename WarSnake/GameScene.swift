@@ -13,6 +13,10 @@ final class GameScene: SKScene {
     var player: PlayerSnake!
     
     override func didMove(to view: SKView) {
+        
+        physicsWorld.contactDelegate = self
+        physicsWorld.gravity = CGVector.zero
+        
         configureStartScene()
         spawnFlower()
         player.performСrawl()
@@ -134,5 +138,16 @@ final class GameScene: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         playerFire()
+    }
+}
+
+extension GameScene: SKPhysicsContactDelegate {
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        print("contact detected")
+    }
+    
+    func didEnd(_ contact: SKPhysicsContact) {
+        print("print")
     }
 }

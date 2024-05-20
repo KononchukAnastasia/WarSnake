@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B507D11B2BF8B9F200BD1C15 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B507D11A2BF8B9F200BD1C15 /* Assets.swift */; };
 		B507D11D2BF8BF9B00BD1C15 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B507D11C2BF8BF9B00BD1C15 /* MenuScene.swift */; };
+		B507D11F2BFB4E0700BD1C15 /* BitMaskCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B507D11E2BFB4E0700BD1C15 /* BitMaskCategory.swift */; };
 		B53975182BF6521500885D17 /* YellowPowerUp.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B53975172BF6521500885D17 /* YellowPowerUp.atlas */; };
 		B5520A522BF63FF500E09B0D /* PowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5520A512BF63FF500E09B0D /* PowerUp.swift */; };
 		B5520A542BF641E700E09B0D /* BluePowerUp.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B5520A532BF641E700E09B0D /* BluePowerUp.atlas */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		B507D11A2BF8B9F200BD1C15 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		B507D11C2BF8BF9B00BD1C15 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		B507D11E2BFB4E0700BD1C15 /* BitMaskCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitMaskCategory.swift; sourceTree = "<group>"; };
 		B53975172BF6521500885D17 /* YellowPowerUp.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = YellowPowerUp.atlas; sourceTree = SOURCE_ROOT; };
 		B5520A512BF63FF500E09B0D /* PowerUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUp.swift; sourceTree = "<group>"; };
 		B5520A532BF641E700E09B0D /* BluePowerUp.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BluePowerUp.atlas; sourceTree = SOURCE_ROOT; };
@@ -95,6 +97,7 @@
 				B507D11C2BF8BF9B00BD1C15 /* MenuScene.swift */,
 				B5ABEE8C2BF2385F00756558 /* GameScene.swift */,
 				B507D11A2BF8B9F200BD1C15 /* Assets.swift */,
+				B507D11E2BFB4E0700BD1C15 /* BitMaskCategory.swift */,
 				B5ABEEA32BF33D9100756558 /* PlayerSnake.swift */,
 				B590ADB52BF8AB2B0043F87A /* Shot.swift */,
 				B590ADB72BF8B5630043F87A /* YellowShot.swift */,
@@ -205,6 +208,7 @@
 				B5EA22A32BF6570F00E945BE /* YellowPowerUp.swift in Sources */,
 				B590ADB82BF8B5630043F87A /* YellowShot.swift in Sources */,
 				B507D11B2BF8B9F200BD1C15 /* Assets.swift in Sources */,
+				B507D11F2BFB4E0700BD1C15 /* BitMaskCategory.swift in Sources */,
 				B5EA22A12BF656DA00E945BE /* BluePowerUp.swift in Sources */,
 				B5ABEE8F2BF2385F00756558 /* GameViewController.swift in Sources */,
 				B5ABEE872BF2385F00756558 /* AppDelegate.swift in Sources */,
