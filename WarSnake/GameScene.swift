@@ -144,7 +144,15 @@ final class GameScene: SKScene {
 extension GameScene: SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
-        print("contact detected")
+        let contactCategory: BitMaskCategory = [contact.bodyA.category, contact.bodyB.category]
+        
+        switch contactCategory {
+        case [.enemy, .player]: print("enemy vc player")
+        case [.powerUp, .player]: print("powerUp vc player")
+        case [.enemy, .shot]: print("enemy vc shot")
+        default: preconditionFailure("Unable to detect collision category")
+            
+        }
     }
     
     func didEnd(_ contact: SKPhysicsContact) {
