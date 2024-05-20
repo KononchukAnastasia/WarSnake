@@ -13,6 +13,7 @@
 		B53975182BF6521500885D17 /* YellowPowerUp.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B53975172BF6521500885D17 /* YellowPowerUp.atlas */; };
 		B5520A522BF63FF500E09B0D /* PowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5520A512BF63FF500E09B0D /* PowerUp.swift */; };
 		B5520A542BF641E700E09B0D /* BluePowerUp.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B5520A532BF641E700E09B0D /* BluePowerUp.atlas */; };
+		B580DF3C2BFB9A7900571FA3 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B580DF3B2BFB9A7900571FA3 /* HUD.swift */; };
 		B590ADB32BF8AA320043F87A /* YellowShot.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B590ADB22BF8AA320043F87A /* YellowShot.atlas */; };
 		B590ADB62BF8AB2B0043F87A /* Shot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B590ADB52BF8AB2B0043F87A /* Shot.swift */; };
 		B590ADB82BF8B5630043F87A /* YellowShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B590ADB72BF8B5630043F87A /* YellowShot.swift */; };
@@ -41,6 +42,7 @@
 		B53975172BF6521500885D17 /* YellowPowerUp.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = YellowPowerUp.atlas; sourceTree = SOURCE_ROOT; };
 		B5520A512BF63FF500E09B0D /* PowerUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUp.swift; sourceTree = "<group>"; };
 		B5520A532BF641E700E09B0D /* BluePowerUp.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BluePowerUp.atlas; sourceTree = SOURCE_ROOT; };
+		B580DF3B2BFB9A7900571FA3 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		B590ADB22BF8AA320043F87A /* YellowShot.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = YellowShot.atlas; sourceTree = SOURCE_ROOT; };
 		B590ADB52BF8AB2B0043F87A /* Shot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shot.swift; sourceTree = "<group>"; };
 		B590ADB72BF8B5630043F87A /* YellowShot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellowShot.swift; sourceTree = "<group>"; };
@@ -74,6 +76,68 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B580DF3D2BFB9CFF00571FA3 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				B5ABEE862BF2385F00756558 /* AppDelegate.swift */,
+				B5ABEE902BF2385F00756558 /* Main.storyboard */,
+				B5ABEE932BF2386200756558 /* Assets.xcassets */,
+				B5ABEE952BF2386200756558 /* LaunchScreen.storyboard */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		B580DF3E2BFB9D2200571FA3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B5ABEE8E2BF2385F00756558 /* GameViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B580DF3F2BFB9D4E00571FA3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B5ABEEA12BF2682C00756558 /* Extension + UIWindow.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B580DF402BFB9D8E00571FA3 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B580DF3B2BFB9A7900571FA3 /* HUD.swift */,
+				B5ABEEA32BF33D9100756558 /* PlayerSnake.swift */,
+				B590ADB52BF8AB2B0043F87A /* Shot.swift */,
+				B590ADB72BF8B5630043F87A /* YellowShot.swift */,
+				B5EA22A42BF759F600E945BE /* Enemy.swift */,
+				B5ABEE9F2BF25F5700756558 /* Flower.swift */,
+				B5520A512BF63FF500E09B0D /* PowerUp.swift */,
+				B5EA22A22BF6570F00E945BE /* YellowPowerUp.swift */,
+				B5EA22A02BF656DA00E945BE /* BluePowerUp.swift */,
+				B5ABEE9D2BF23CF600756558 /* Background.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		B580DF412BFB9DB500571FA3 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				B507D11A2BF8B9F200BD1C15 /* Assets.swift */,
+				B507D11E2BFB4E0700BD1C15 /* BitMaskCategory.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		B580DF422BFB9DD200571FA3 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				B507D11C2BF8BF9B00BD1C15 /* MenuScene.swift */,
+				B5ABEE8C2BF2385F00756558 /* GameScene.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
 		B5ABEE7A2BF2385F00756558 = {
 			isa = PBXGroup;
 			children = (
@@ -93,31 +157,18 @@
 		B5ABEE852BF2385F00756558 /* WarSnake */ = {
 			isa = PBXGroup;
 			children = (
-				B5ABEE862BF2385F00756558 /* AppDelegate.swift */,
-				B507D11C2BF8BF9B00BD1C15 /* MenuScene.swift */,
-				B5ABEE8C2BF2385F00756558 /* GameScene.swift */,
-				B507D11A2BF8B9F200BD1C15 /* Assets.swift */,
-				B507D11E2BFB4E0700BD1C15 /* BitMaskCategory.swift */,
-				B5ABEEA32BF33D9100756558 /* PlayerSnake.swift */,
-				B590ADB52BF8AB2B0043F87A /* Shot.swift */,
-				B590ADB72BF8B5630043F87A /* YellowShot.swift */,
-				B5EA22A42BF759F600E945BE /* Enemy.swift */,
-				B5ABEE9F2BF25F5700756558 /* Flower.swift */,
-				B5520A512BF63FF500E09B0D /* PowerUp.swift */,
-				B5EA22A22BF6570F00E945BE /* YellowPowerUp.swift */,
-				B5EA22A02BF656DA00E945BE /* BluePowerUp.swift */,
-				B5ABEE9D2BF23CF600756558 /* Background.swift */,
-				B5ABEEA12BF2682C00756558 /* Extension + UIWindow.swift */,
-				B5ABEE8E2BF2385F00756558 /* GameViewController.swift */,
+				B580DF422BFB9DD200571FA3 /* Scenes */,
+				B580DF412BFB9DB500571FA3 /* Managers */,
+				B580DF402BFB9D8E00571FA3 /* Classes */,
+				B580DF3F2BFB9D4E00571FA3 /* Extensions */,
+				B580DF3E2BFB9D2200571FA3 /* ViewControllers */,
 				B590ADB22BF8AA320043F87A /* YellowShot.atlas */,
 				B5EA22A62BF75A7E00E945BE /* Enemy1.atlas */,
 				B5B9C89E2BF787D4003836AB /* Enemy2.atlas */,
 				B53975172BF6521500885D17 /* YellowPowerUp.atlas */,
 				B5520A532BF641E700E09B0D /* BluePowerUp.atlas */,
 				B5ABEEA52BF3400400756558 /* playerSnake.atlas */,
-				B5ABEE902BF2385F00756558 /* Main.storyboard */,
-				B5ABEE932BF2386200756558 /* Assets.xcassets */,
-				B5ABEE952BF2386200756558 /* LaunchScreen.storyboard */,
+				B580DF3D2BFB9CFF00571FA3 /* Supporting */,
 			);
 			path = WarSnake;
 			sourceTree = "<group>";
@@ -214,6 +265,7 @@
 				B5ABEE872BF2385F00756558 /* AppDelegate.swift in Sources */,
 				B507D11D2BF8BF9B00BD1C15 /* MenuScene.swift in Sources */,
 				B5ABEE9E2BF23CF600756558 /* Background.swift in Sources */,
+				B580DF3C2BFB9A7900571FA3 /* HUD.swift in Sources */,
 				B5ABEEA22BF2682C00756558 /* Extension + UIWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
