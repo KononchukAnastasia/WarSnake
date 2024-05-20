@@ -15,11 +15,12 @@ final class PlayerSnake: SKSpriteNode {
     var moveTextureArrayAnimation = [SKTexture]()
     
     static func populate(at point: CGPoint) -> PlayerSnake {
-        let playerSnakeTexture = SKTexture(imageNamed: "snake4")
+        let atlas = Assets.shared.playerSnakeAtlas
+        let playerSnakeTexture = atlas.textureNamed("snake4")
         let playerSnake = PlayerSnake(texture: playerSnakeTexture)
         playerSnake.setScale(0.3)
         playerSnake.position = point
-        playerSnake.zPosition = 20
+        playerSnake.zPosition = 40
         return playerSnake
     }
     

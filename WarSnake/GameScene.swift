@@ -31,8 +31,8 @@ final class GameScene: SKScene {
     }
     
     private func spawnSpiralOfEnemies() {
-           let enemyTextureAtlas1 = SKTextureAtlas(named: "Enemy1")
-           let enemyTextureAtlas2 = SKTextureAtlas(named: "Enemy2")
+        let enemyTextureAtlas1 = Assets.shared.enemy1Atlas
+        let enemyTextureAtlas2 = Assets.shared.enemy2Atlas
            SKTextureAtlas.preloadTextureAtlases([enemyTextureAtlas1, enemyTextureAtlas2]) { [unowned self] in
                 
                let randomNumber = Int(arc4random_uniform(2))
@@ -117,5 +117,22 @@ final class GameScene: SKScene {
                 node.removeFromParent()
             }
         }
+        
+        enumerateChildNodes(withName: "ShotSprite") { (node, stop) in
+            if node.position.y >= self.size.height + 100 {
+                node.removeFromParent()
+            }
+        }
+    }
+    
+    private func playerFire() {
+        let shot = YellowShot()
+        shot.position = CGPoint(x: self.player.position.x, y: self.player.position.y + 40)
+        shot.startMovement()
+        self.addChild(shot)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        playerFire()
     }
 }

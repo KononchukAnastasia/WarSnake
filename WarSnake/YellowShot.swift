@@ -1,16 +1,16 @@
 //
-//  BluePowerUp.swift
+//  YellowShot.swift
 //  WarSnake
 //
-//  Created by Анастасия Конончук on 16.05.2024.
+//  Created by Анастасия Конончук on 18.05.2024.
 //
 
 import SpriteKit
 
-class BluePowerUp: PowerUp {
-    
+class YellowShot: Shot {
+
     init() {
-        let textureAtlas = Assets.shared.bluePowerUpAtlas
+        let textureAtlas = Assets.shared.yellowShotAtlas
         super.init(textureAtlas: textureAtlas)
     }
     
