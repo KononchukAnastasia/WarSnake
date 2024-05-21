@@ -10,11 +10,17 @@ import GameplayKit
 
 final class GameScene: SKScene {
     
+    let sceneManager = SceneManager.shared
+    
     private var player: PlayerSnake!
     private let hud = HUD()
     private let screenSize = UIWindow.bounds.size
     
     override func didMove(to view: SKView) {
+        
+        guard sceneManager.gameScene == nil else { return }
+        
+        sceneManager.gameScene = self
         
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector.zero

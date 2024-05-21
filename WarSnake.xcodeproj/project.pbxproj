@@ -15,6 +15,7 @@
 		B5520A542BF641E700E09B0D /* BluePowerUp.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B5520A532BF641E700E09B0D /* BluePowerUp.atlas */; };
 		B55B4D162BFCAC27005A1055 /* ButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55B4D152BFCAC27005A1055 /* ButtonNode.swift */; };
 		B55B4D182BFCCF52005A1055 /* PauseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55B4D172BFCCF52005A1055 /* PauseScene.swift */; };
+		B55B4D1A2BFCD5A1005A1055 /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55B4D192BFCD5A1005A1055 /* SceneManager.swift */; };
 		B580DF3C2BFB9A7900571FA3 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B580DF3B2BFB9A7900571FA3 /* HUD.swift */; };
 		B590ADB32BF8AA320043F87A /* YellowShot.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B590ADB22BF8AA320043F87A /* YellowShot.atlas */; };
 		B590ADB62BF8AB2B0043F87A /* Shot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B590ADB52BF8AB2B0043F87A /* Shot.swift */; };
@@ -46,6 +47,7 @@
 		B5520A532BF641E700E09B0D /* BluePowerUp.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BluePowerUp.atlas; sourceTree = SOURCE_ROOT; };
 		B55B4D152BFCAC27005A1055 /* ButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonNode.swift; sourceTree = "<group>"; };
 		B55B4D172BFCCF52005A1055 /* PauseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseScene.swift; sourceTree = "<group>"; };
+		B55B4D192BFCD5A1005A1055 /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
 		B580DF3B2BFB9A7900571FA3 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		B590ADB22BF8AA320043F87A /* YellowShot.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = YellowShot.atlas; sourceTree = SOURCE_ROOT; };
 		B590ADB52BF8AB2B0043F87A /* Shot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shot.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				B507D11A2BF8B9F200BD1C15 /* Assets.swift */,
+				B55B4D192BFCD5A1005A1055 /* SceneManager.swift */,
 				B507D11E2BFB4E0700BD1C15 /* BitMaskCategory.swift */,
 			);
 			path = Managers;
@@ -258,6 +261,7 @@
 			files = (
 				B5ABEEA02BF25F5700756558 /* Flower.swift in Sources */,
 				B5ABEE8D2BF2385F00756558 /* GameScene.swift in Sources */,
+				B55B4D1A2BFCD5A1005A1055 /* SceneManager.swift in Sources */,
 				B5520A522BF63FF500E09B0D /* PowerUp.swift in Sources */,
 				B590ADB62BF8AB2B0043F87A /* Shot.swift in Sources */,
 				B5EA22A52BF759F600E945BE /* Enemy.swift in Sources */,
