@@ -9,20 +9,40 @@ import SpriteKit
 
 class MenuScene: SKScene {
     override func didMove(to view: SKView) {
-        Assets.shared.preloadAssets()
-        backgroundColor = SKColor(red: 0.15, green: 0.15, blue: 0.3, alpha: 1.0)
-        let texture = SKTexture(imageNamed: "playButton")
-        let playButton = SKSpriteNode(texture: texture)
-        playButton.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
-        playButton.name = "runPlayButton"
-        self.addChild(playButton)
+        
+        if !Assets.shared.isLoaded {
+            Assets.shared.preloadAssets()
+            Assets.shared.isLoaded = true
+        }
+        
+        backgroundColor = SKColor(red: 0.47, green: 0.65, blue: 0.04, alpha: 1.0)
+        let image = SKSpriteNode(imageNamed: "snake")
+        image.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 240)
+        image.setScale(0.6)
+        self.addChild(image)
+        
+        let header = ButtonNode(titled: "war   snake", backgroundName: "scores")
+        header.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 150)
+        header.setScale(0.7)
+        self.addChild(header)
+        
+        let titles = ["play", "options", "best"]
+        
+        for (index, title) in titles.enumerated() {
+            let button = ButtonNode(titled: title, backgroundName: "scores")
+            button.position = CGPoint(x: self.frame.midX, y: self.frame.midY - CGFloat(100 * index))
+            button.setScale(0.6)
+            button.name = title
+            button.label.name = title
+            addChild(button)
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let location = touches.first?.location(in: self) else { return }
         let node = self.atPoint(location)
         
-        if node.name == "runPlayButton" {
+        if node.name == "play" {
             let transition = SKTransition.crossFade(withDuration: 1.0)
             let gameScene = GameScene(size: self.size)
             gameScene.scaleMode = .aspectFill
