@@ -18,6 +18,8 @@ final class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
+        self.scene?.isPaused = false
+        
         guard sceneManager.gameScene == nil else { return }
         
         sceneManager.gameScene = self
@@ -157,6 +159,8 @@ final class GameScene: SKScene {
             let transition = SKTransition.doorway(withDuration: 1.0)
             let pauseScene = PauseScene(size: self.size)
             pauseScene.scaleMode = .aspectFill
+            sceneManager.gameScene = self
+            self.scene?.isPaused = true
             self.scene?.view?.presentScene(pauseScene, transition: transition)
         } else {
             playerFire()
@@ -174,7 +178,6 @@ extension GameScene: SKPhysicsContactDelegate {
         case [.powerUp, .player]: print("powerUp vc player")
         case [.enemy, .shot]: print("enemy vc shot")
         default: preconditionFailure("Unable to detect collision category")
-            
         }
     }
     
