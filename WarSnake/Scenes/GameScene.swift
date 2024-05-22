@@ -13,6 +13,26 @@ final class GameScene: ParentScene {
     private var player: PlayerSnake!
     private let hud = HUD()
     private let screenSize = UIWindow.bounds.size
+    private var lives = 3 {
+        didSet {
+            switch lives {
+            case 3:
+                hud.life1.isHidden = false
+                hud.life2.isHidden = false
+                hud.life3.isHidden = false
+            case 2:
+                hud.life1.isHidden = false
+                hud.life2.isHidden = false
+                hud.life3.isHidden = true
+            case 1:
+                hud.life1.isHidden = false
+                hud.life2.isHidden = true
+                hud.life3.isHidden = true
+            default:
+                break
+            }
+        }
+    }
     
     override func didMove(to view: SKView) {
         
@@ -173,6 +193,7 @@ extension GameScene: SKPhysicsContactDelegate {
         let explosion = SKEmitterNode(fileNamed: "EnemyExplosion")
         let contactPoint = contact.contactPoint
         explosion?.position = contactPoint
+        explosion?.zPosition = 25
         
         let waitForExplosionAction = SKAction.wait(forDuration: 1)
         
@@ -182,13 +203,26 @@ extension GameScene: SKPhysicsContactDelegate {
         case [.enemy, .player]: print("enemy vc player")
             
             if contact.bodyA.node?.name == "Sprite" {
-                contact.bodyA.node?.removeFromParent()
+                if contact.bodyA.node?.parent != nil {
+                    contact.bodyA.node?.removeFromParent()
+                    lives -= 1
+                }
             } else {
-                contact.bodyB.node?.removeFromParent()
+                if contact.bodyB.node?.parent != nil {
+                    contact.bodyB.node?.removeFromParent()
+                    lives -= 1
+                }
             }
             addChild(explosion!)
             self.run(waitForExplosionAction) {
                 explosion?.removeFromParent()
+            }
+            
+            if lives == 0 {
+                let gameOverScene = GameOverScene(size: self.size)
+                gameOverScene.scaleMode = .aspectFill
+                let transition = SKTransition.doorsCloseVertical(withDuration: 1.0)
+                self.scene!.view?.presentScene(gameOverScene, transition: transition)
             }
             
         case [.powerUp, .player]: print("powerUp vc player")
