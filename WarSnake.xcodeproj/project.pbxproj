@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B505925B2BFE4AD7007F0747 /* EnemyExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = B50592592BFE4AD7007F0747 /* EnemyExplosion.sks */; };
+		B505925C2BFE4AD7007F0747 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B505925A2BFE4AD7007F0747 /* Assets.xcassets */; };
 		B507D11B2BF8B9F200BD1C15 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B507D11A2BF8B9F200BD1C15 /* Assets.swift */; };
 		B507D11D2BF8BF9B00BD1C15 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B507D11C2BF8BF9B00BD1C15 /* MenuScene.swift */; };
 		B507D11F2BFB4E0700BD1C15 /* BitMaskCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B507D11E2BFB4E0700BD1C15 /* BitMaskCategory.swift */; };
@@ -42,6 +44,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B50592592BFE4AD7007F0747 /* EnemyExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EnemyExplosion.sks; sourceTree = "<group>"; };
+		B505925A2BFE4AD7007F0747 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B507D11A2BF8B9F200BD1C15 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		B507D11C2BF8BF9B00BD1C15 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		B507D11E2BFB4E0700BD1C15 /* BitMaskCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitMaskCategory.swift; sourceTree = "<group>"; };
@@ -88,6 +92,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B505925D2BFE4B04007F0747 /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				B50592592BFE4AD7007F0747 /* EnemyExplosion.sks */,
+				B505925A2BFE4AD7007F0747 /* Assets.xcassets */,
+			);
+			path = Particles;
+			sourceTree = "<group>";
+		};
 		B580DF3D2BFB9CFF00571FA3 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +188,7 @@
 		B5ABEE852BF2385F00756558 /* WarSnake */ = {
 			isa = PBXGroup;
 			children = (
+				B505925D2BFE4B04007F0747 /* Particles */,
 				B580DF422BFB9DD200571FA3 /* Scenes */,
 				B580DF412BFB9DB500571FA3 /* Managers */,
 				B580DF402BFB9D8E00571FA3 /* Classes */,
@@ -251,10 +265,12 @@
 			files = (
 				B5ABEE922BF2385F00756558 /* Main.storyboard in Resources */,
 				B590ADB32BF8AA320043F87A /* YellowShot.atlas in Resources */,
+				B505925C2BFE4AD7007F0747 /* Assets.xcassets in Resources */,
 				B5520A542BF641E700E09B0D /* BluePowerUp.atlas in Resources */,
 				B5ABEE942BF2386200756558 /* Assets.xcassets in Resources */,
 				B5ABEE972BF2386200756558 /* LaunchScreen.storyboard in Resources */,
 				B53975182BF6521500885D17 /* YellowPowerUp.atlas in Resources */,
+				B505925B2BFE4AD7007F0747 /* EnemyExplosion.sks in Resources */,
 				B5EA22A72BF75A7E00E945BE /* Enemy1.atlas in Resources */,
 				B5ABEEA62BF3400400756558 /* playerSnake.atlas in Resources */,
 				B5B9C89F2BF787D4003836AB /* Enemy2.atlas in Resources */,
