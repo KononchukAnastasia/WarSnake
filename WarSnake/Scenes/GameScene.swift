@@ -160,6 +160,18 @@ final class GameScene: ParentScene {
                 node.removeFromParent()
             }
         }
+        
+        enumerateChildNodes(withName: "YellowPowerUp") { (node, stop) in
+            if node.position.y <= -100 {
+                node.removeFromParent()
+            }
+        }
+        
+        enumerateChildNodes(withName: "BluePowerUp") { (node, stop) in
+            if node.position.y <= -100 {
+                node.removeFromParent()
+            }
+        }
     }
     
     private func playerFire() {
@@ -226,13 +238,40 @@ extension GameScene: SKPhysicsContactDelegate {
             }
             
         case [.powerUp, .player]: print("powerUp vc player")
+            
+            if contact.bodyA.node?.parent != nil && contact.bodyB.node?.parent != nil {
+                if contact.bodyA.node?.name == "BluePowerUp" {
+                    contact.bodyA.node?.removeFromParent()
+                    lives = 3
+                    player.greenPowerUp()
+                } else if contact.bodyB.node?.name == "BluePowerUp" {
+                    contact.bodyB.node?.removeFromParent()
+                    lives = 3
+                    player.greenPowerUp()
+                }
+                
+                if contact.bodyA.node?.name == "YellowPowerUp" {
+                    contact.bodyA.node?.removeFromParent()
+                    lives = 3
+                    player.bluePowerUp()
+                } else if contact.bodyB.node?.name == "YellowPowerUp" {
+                    contact.bodyB.node?.removeFromParent()
+                    lives = 3
+                    player.bluePowerUp()
+                }
+                
+            }
+            
         case [.enemy, .shot]: print("enemy vc shot")
             
-            contact.bodyA.node?.removeFromParent()
-            contact.bodyB.node?.removeFromParent()
-            addChild(explosion!)
-            self.run(waitForExplosionAction) {
-                explosion?.removeFromParent()
+            if contact.bodyA.node?.parent != nil {
+                contact.bodyA.node?.removeFromParent()
+                contact.bodyB.node?.removeFromParent()
+                hud.score += 5
+                addChild(explosion!)
+                self.run(waitForExplosionAction) {
+                    explosion?.removeFromParent()
+                }
             }
             
         default: preconditionFailure("Unable to detect collision category")

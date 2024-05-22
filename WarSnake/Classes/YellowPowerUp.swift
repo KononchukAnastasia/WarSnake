@@ -12,6 +12,7 @@ class YellowPowerUp: PowerUp {
     init() {
         let textureAtlas = Assets.shared.yellowPowerUpAtlas
         super.init(textureAtlas: textureAtlas)
+        name = "YellowPowerUp"
     }
     
     required init?(coder aDecoder: NSCoder) {
