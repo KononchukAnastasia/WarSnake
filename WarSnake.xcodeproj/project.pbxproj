@@ -18,6 +18,7 @@
 		B55B4D1A2BFCD5A1005A1055 /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55B4D192BFCD5A1005A1055 /* SceneManager.swift */; };
 		B55B4D1C2BFDD1EA005A1055 /* ParentScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55B4D1B2BFDD1EA005A1055 /* ParentScene.swift */; };
 		B55B4D1E2BFDD5A1005A1055 /* OptionsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55B4D1D2BFDD5A1005A1055 /* OptionsScene.swift */; };
+		B55B4D202BFDE788005A1055 /* BestScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55B4D1F2BFDE788005A1055 /* BestScene.swift */; };
 		B580DF3C2BFB9A7900571FA3 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B580DF3B2BFB9A7900571FA3 /* HUD.swift */; };
 		B590ADB32BF8AA320043F87A /* YellowShot.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B590ADB22BF8AA320043F87A /* YellowShot.atlas */; };
 		B590ADB62BF8AB2B0043F87A /* Shot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B590ADB52BF8AB2B0043F87A /* Shot.swift */; };
@@ -52,6 +53,7 @@
 		B55B4D192BFCD5A1005A1055 /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
 		B55B4D1B2BFDD1EA005A1055 /* ParentScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentScene.swift; sourceTree = "<group>"; };
 		B55B4D1D2BFDD5A1005A1055 /* OptionsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsScene.swift; sourceTree = "<group>"; };
+		B55B4D1F2BFDE788005A1055 /* BestScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestScene.swift; sourceTree = "<group>"; };
 		B580DF3B2BFB9A7900571FA3 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		B590ADB22BF8AA320043F87A /* YellowShot.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = YellowShot.atlas; sourceTree = SOURCE_ROOT; };
 		B590ADB52BF8AB2B0043F87A /* Shot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shot.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				B5ABEE8C2BF2385F00756558 /* GameScene.swift */,
 				B55B4D172BFCCF52005A1055 /* PauseScene.swift */,
 				B55B4D1D2BFDD5A1005A1055 /* OptionsScene.swift */,
+				B55B4D1F2BFDE788005A1055 /* BestScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				B507D11F2BFB4E0700BD1C15 /* BitMaskCategory.swift in Sources */,
 				B5EA22A12BF656DA00E945BE /* BluePowerUp.swift in Sources */,
 				B5ABEE8F2BF2385F00756558 /* GameViewController.swift in Sources */,
+				B55B4D202BFDE788005A1055 /* BestScene.swift in Sources */,
 				B5ABEE872BF2385F00756558 /* AppDelegate.swift in Sources */,
 				B507D11D2BF8BF9B00BD1C15 /* MenuScene.swift in Sources */,
 				B5ABEE9E2BF23CF600756558 /* Background.swift in Sources */,

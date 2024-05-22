@@ -18,4 +18,13 @@ class ParentScene: SKScene {
         header.setScale(0.7)
         self.addChild(header)
     }
+    
+    override init(size: CGSize) {
+        super.init(size: size)
+        backgroundColor = SKColor(red: 0.47, green: 0.65, blue: 0.04, alpha: 1.0)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }

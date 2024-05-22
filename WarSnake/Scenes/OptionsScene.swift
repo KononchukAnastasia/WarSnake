@@ -10,8 +10,6 @@ import SpriteKit
 class OptionsScene: ParentScene {
     override func didMove(to view: SKView) {
         
-        backgroundColor = SKColor(red: 0.47, green: 0.65, blue: 0.04, alpha: 1.0)
-        
         let image = SKSpriteNode(imageNamed: "snake_crawl")
         image.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 228)
         image.setScale(0.6)

@@ -15,8 +15,6 @@ class MenuScene: ParentScene {
             Assets.shared.isLoaded = true
         }
         
-        backgroundColor = SKColor(red: 0.47, green: 0.65, blue: 0.04, alpha: 1.0)
-        
         let image = SKSpriteNode(imageNamed: "snake")
         image.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 250)
         image.setScale(0.6)
@@ -52,6 +50,12 @@ class MenuScene: ParentScene {
             optionScene.backScene = self
             optionScene.scaleMode = .aspectFill
             self.scene!.view?.presentScene(optionScene, transition: transition)
+        } else if node.name == "best" {
+            let transition = SKTransition.crossFade(withDuration: 1.0)
+            let bestScene = BestScene(size: self.size)
+            bestScene.backScene = self
+            bestScene.scaleMode = .aspectFill
+            self.scene!.view?.presentScene(bestScene, transition: transition)
         }
     }
 }
