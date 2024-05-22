@@ -8,9 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-final class GameScene: SKScene {
-    
-    let sceneManager = SceneManager.shared
+final class GameScene: ParentScene {
     
     private var player: PlayerSnake!
     private let hud = HUD()
