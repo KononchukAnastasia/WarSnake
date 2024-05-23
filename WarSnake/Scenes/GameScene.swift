@@ -10,6 +10,8 @@ import GameplayKit
 
 final class GameScene: ParentScene {
     
+    var backgroundMusic: SKAudioNode!
+    
     private var player: PlayerSnake!
     private let hud = HUD()
     private let screenSize = UIWindow.bounds.size
@@ -35,6 +37,11 @@ final class GameScene: ParentScene {
     }
     
     override func didMove(to view: SKView) {
+        
+        if let musicURL = Bundle.main.url(forResource: "backgroundMusic", withExtension: "m4a") {
+            backgroundMusic = SKAudioNode(url: musicURL)
+            addChild(backgroundMusic)
+        }
         
         self.scene?.isPaused = false
         
@@ -243,30 +250,31 @@ extension GameScene: SKPhysicsContactDelegate {
                 if contact.bodyA.node?.name == "BluePowerUp" {
                     contact.bodyA.node?.removeFromParent()
                     lives = 3
-                    player.greenPowerUp()
+                    player.bluePowerUp()
                 } else if contact.bodyB.node?.name == "BluePowerUp" {
                     contact.bodyB.node?.removeFromParent()
                     lives = 3
-                    player.greenPowerUp()
+                    player.bluePowerUp()
                 }
                 
                 if contact.bodyA.node?.name == "YellowPowerUp" {
                     contact.bodyA.node?.removeFromParent()
                     lives = 3
-                    player.bluePowerUp()
+                    player.yellowPowerUp()
                 } else if contact.bodyB.node?.name == "YellowPowerUp" {
                     contact.bodyB.node?.removeFromParent()
                     lives = 3
-                    player.bluePowerUp()
+                    player.yellowPowerUp()
                 }
                 
             }
             
         case [.enemy, .shot]: print("enemy vc shot")
             
-            if contact.bodyA.node?.parent != nil {
+            if contact.bodyA.node?.parent != nil && contact.bodyB.node?.parent != nil {
                 contact.bodyA.node?.removeFromParent()
                 contact.bodyB.node?.removeFromParent()
+                self.run(SKAction.playSoundFileNamed("hitSound", waitForCompletion: false))
                 hud.score += 5
                 addChild(explosion!)
                 self.run(waitForExplosionAction) {

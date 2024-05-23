@@ -82,17 +82,17 @@ final class PlayerSnake: SKSpriteNode {
         }
     }
     
-    func greenPowerUp() {
-        let colorAction = SKAction.colorize(with: .green, colorBlendFactor: 1.0, duration: 0.2)
-        let uncolorAction = SKAction.colorize(with: .green, colorBlendFactor: 0.0, duration: 0.2)
+    func yellowPowerUp() {
+        let colorAction = SKAction.colorize(with: .orange, colorBlendFactor: 1.0, duration: 0.2)
+        let uncolorAction = SKAction.colorize(with: .orange, colorBlendFactor: 0.0, duration: 0.2)
         let sequenceAction = SKAction.sequence([colorAction, uncolorAction])
         let repeatAction = SKAction.repeat(sequenceAction, count: 5)
         self.run(repeatAction)
     }
     
     func bluePowerUp() {
-        let colorAction = SKAction.colorize(with: .blue, colorBlendFactor: 1.0, duration: 0.2)
-        let uncolorAction = SKAction.colorize(with: .blue, colorBlendFactor: 0.0, duration: 0.2)
+        let colorAction = SKAction.colorize(with: .systemCyan, colorBlendFactor: 1.0, duration: 0.2)
+        let uncolorAction = SKAction.colorize(with: .systemCyan, colorBlendFactor: 0.0, duration: 0.2)
         let sequenceAction = SKAction.sequence([colorAction, uncolorAction])
         let repeatAction = SKAction.repeat(sequenceAction, count: 5)
         self.run(repeatAction)

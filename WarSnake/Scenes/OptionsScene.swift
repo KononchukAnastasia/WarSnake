@@ -18,22 +18,23 @@ class OptionsScene: ParentScene {
         setHeader(withName: "options", andBackground: "scores")
         
         let buttonMusic = ButtonNode(titled: nil, backgroundName: "music")
-        buttonMusic.position = CGPoint(x: self.frame.midX - 60, y: self.frame.midY)
-        buttonMusic.setScale(0.18)
+        buttonMusic.position = CGPoint(x: self.frame.midX - 70, y: self.frame.midY)
+        buttonMusic.setScale(0.4)
         buttonMusic.name = "music"
         buttonMusic.label.isHidden = true
         addChild(buttonMusic)
         
         let buttonSound = ButtonNode(titled: nil, backgroundName: "sound")
-        buttonSound.position = CGPoint(x: self.frame.midX + 60, y: self.frame.midY)
-        buttonSound.setScale(0.2)
+        buttonSound.position = CGPoint(x: self.frame.midX + 70, y: self.frame.midY)
+        buttonSound.setScale(0.4)
         buttonSound.name = "sound"
         buttonSound.label.isHidden = true
         addChild(buttonSound)
         
         let buttonBack = ButtonNode(titled: "back", backgroundName: "scores")
         buttonBack.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 100)
-        buttonBack.setScale(0.6)
+        buttonBack.yScale = 0.5
+        buttonBack.xScale = 0.4
         buttonBack.name = "back"
         buttonBack.label.name = "back"
         addChild(buttonBack)

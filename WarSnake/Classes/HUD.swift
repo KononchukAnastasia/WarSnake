@@ -24,8 +24,8 @@ class HUD: SKNode {
         scoreBackground.xScale = 0.4
         scoreBackground.yScale = 0.3
         scoreBackground.position = CGPoint(
-            x: scoreBackground.size.width + 10,
-            y: screenSize.height - scoreBackground.size.height / 2 - 10
+            x: scoreBackground.size.width + 20,
+            y: screenSize.height - scoreBackground.size.height / 2 - 60
         )
         scoreBackground.anchorPoint = CGPoint(x: 1.0, y: 0.5)
         scoreBackground.zPosition = 99

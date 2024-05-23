@@ -15,7 +15,8 @@ class ParentScene: SKScene {
     func setHeader(withName name: String?, andBackground backgroundName: String) {
         let header = ButtonNode(titled: name, backgroundName: backgroundName)
         header.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 150)
-        header.setScale(0.7)
+        header.yScale = 0.7
+        header.xScale = 0.5
         self.addChild(header)
     }
     
