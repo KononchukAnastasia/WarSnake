@@ -224,11 +224,13 @@ extension GameScene: SKPhysicsContactDelegate {
             if contact.bodyA.node?.name == "Sprite" {
                 if contact.bodyA.node?.parent != nil {
                     contact.bodyA.node?.removeFromParent()
+                    self.run(SKAction.playSoundFileNamed("biteSound", waitForCompletion: false))
                     lives -= 1
                 }
             } else {
                 if contact.bodyB.node?.parent != nil {
                     contact.bodyB.node?.removeFromParent()
+                    self.run(SKAction.playSoundFileNamed("biteSound", waitForCompletion: false))
                     lives -= 1
                 }
             }
@@ -236,12 +238,26 @@ extension GameScene: SKPhysicsContactDelegate {
             self.run(waitForExplosionAction) {
                 explosion?.removeFromParent()
             }
+//            
+//            if lives == 0 {
+//                let gameOverScene = GameOverScene(size: self.size)
+//                gameOverScene.scaleMode = .aspectFill
+//                let transition = SKTransition.doorsCloseVertical(withDuration: 1.0)
+//                self.scene!.view?.presentScene(gameOverScene, transition: transition)
+//            }
             
             if lives == 0 {
-                let gameOverScene = GameOverScene(size: self.size)
-                gameOverScene.scaleMode = .aspectFill
-                let transition = SKTransition.doorsCloseVertical(withDuration: 1.0)
-                self.scene!.view?.presentScene(gameOverScene, transition: transition)
+                self.removeAllActions()
+                self.run(SKAction.playSoundFileNamed("gameOverSound", waitForCompletion: false))
+                
+                let wait = SKAction.wait(forDuration: 0.3)
+                let changeScene = SKAction.run {
+                    let gameOverScene = GameOverScene(size: self.size)
+                    gameOverScene.scaleMode = .aspectFill
+                    let transition = SKTransition.doorsCloseVertical(withDuration: 1.0)
+                    self.scene!.view?.presentScene(gameOverScene, transition: transition)
+                }
+                self.run(SKAction.sequence([wait, changeScene]))
             }
             
         case [.powerUp, .player]: print("powerUp vc player")
@@ -249,20 +265,24 @@ extension GameScene: SKPhysicsContactDelegate {
             if contact.bodyA.node?.parent != nil && contact.bodyB.node?.parent != nil {
                 if contact.bodyA.node?.name == "BluePowerUp" {
                     contact.bodyA.node?.removeFromParent()
+                    self.run(SKAction.playSoundFileNamed("powerUpSound", waitForCompletion: false))
                     lives = 3
                     player.bluePowerUp()
                 } else if contact.bodyB.node?.name == "BluePowerUp" {
                     contact.bodyB.node?.removeFromParent()
+                    self.run(SKAction.playSoundFileNamed("powerUpSound", waitForCompletion: false))
                     lives = 3
                     player.bluePowerUp()
                 }
                 
                 if contact.bodyA.node?.name == "YellowPowerUp" {
                     contact.bodyA.node?.removeFromParent()
+                    self.run(SKAction.playSoundFileNamed("powerUpSound", waitForCompletion: false))
                     lives = 3
                     player.yellowPowerUp()
                 } else if contact.bodyB.node?.name == "YellowPowerUp" {
                     contact.bodyB.node?.removeFromParent()
+                    self.run(SKAction.playSoundFileNamed("powerUpSound", waitForCompletion: false))
                     lives = 3
                     player.yellowPowerUp()
                 }
