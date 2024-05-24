@@ -259,6 +259,10 @@ extension GameScene: SKPhysicsContactDelegate {
 //            }
             
             if lives == 0 {
+                
+                gameSettings.currentScore = hud.score
+                gameSettings.saveScores()
+                
                 self.removeAllActions()
                 
                 if gameSettings.isSound {
