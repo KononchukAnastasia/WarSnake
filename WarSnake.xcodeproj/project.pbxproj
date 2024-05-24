@@ -15,6 +15,7 @@
 		B50592672BFF9C76007F0747 /* powerUpSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B50592662BFF9C76007F0747 /* powerUpSound.mp3 */; };
 		B50592692BFF9C81007F0747 /* biteSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B50592682BFF9C81007F0747 /* biteSound.mp3 */; };
 		B505926B2BFF9E76007F0747 /* gameOverSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B505926A2BFF9E76007F0747 /* gameOverSound.mp3 */; };
+		B505926D2C006D8A007F0747 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B505926C2C006D8A007F0747 /* GameSettings.swift */; };
 		B507D11B2BF8B9F200BD1C15 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B507D11A2BF8B9F200BD1C15 /* Assets.swift */; };
 		B507D11D2BF8BF9B00BD1C15 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B507D11C2BF8BF9B00BD1C15 /* MenuScene.swift */; };
 		B507D11F2BFB4E0700BD1C15 /* BitMaskCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B507D11E2BFB4E0700BD1C15 /* BitMaskCategory.swift */; };
@@ -58,6 +59,7 @@
 		B50592662BFF9C76007F0747 /* powerUpSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = powerUpSound.mp3; path = music/powerUpSound.mp3; sourceTree = SOURCE_ROOT; };
 		B50592682BFF9C81007F0747 /* biteSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = biteSound.mp3; path = music/biteSound.mp3; sourceTree = SOURCE_ROOT; };
 		B505926A2BFF9E76007F0747 /* gameOverSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gameOverSound.mp3; path = music/gameOverSound.mp3; sourceTree = SOURCE_ROOT; };
+		B505926C2C006D8A007F0747 /* GameSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
 		B507D11A2BF8B9F200BD1C15 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		B507D11C2BF8BF9B00BD1C15 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		B507D11E2BFB4E0700BD1C15 /* BitMaskCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitMaskCategory.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				B507D11A2BF8B9F200BD1C15 /* Assets.swift */,
 				B55B4D192BFCD5A1005A1055 /* SceneManager.swift */,
 				B507D11E2BFB4E0700BD1C15 /* BitMaskCategory.swift */,
+				B505926C2C006D8A007F0747 /* GameSettings.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 			files = (
 				B55B4D1C2BFDD1EA005A1055 /* ParentScene.swift in Sources */,
 				B55B4D1E2BFDD5A1005A1055 /* OptionsScene.swift in Sources */,
+				B505926D2C006D8A007F0747 /* GameSettings.swift in Sources */,
 				B5ABEEA02BF25F5700756558 /* Flower.swift in Sources */,
 				B5ABEE8D2BF2385F00756558 /* GameScene.swift in Sources */,
 				B55B4D1A2BFCD5A1005A1055 /* SceneManager.swift in Sources */,

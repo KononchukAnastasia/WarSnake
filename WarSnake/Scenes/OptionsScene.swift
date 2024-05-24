@@ -8,7 +8,14 @@
 import SpriteKit
 
 class OptionsScene: ParentScene {
+    
+    var isMusic: Bool!
+    var isSound: Bool!
+    
     override func didMove(to view: SKView) {
+        
+        isMusic = gameSettings.isMusic
+        isSound = gameSettings.isSound
         
         let image = SKSpriteNode(imageNamed: "snake_crawl")
         image.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 228)
@@ -17,14 +24,18 @@ class OptionsScene: ParentScene {
         
         setHeader(withName: "options", andBackground: "scores")
         
-        let buttonMusic = ButtonNode(titled: nil, backgroundName: "music")
+        let backgroundNameForMusic = isMusic == true ? "music" : "nomusic"
+        
+        let buttonMusic = ButtonNode(titled: nil, backgroundName: backgroundNameForMusic)
         buttonMusic.position = CGPoint(x: self.frame.midX - 70, y: self.frame.midY)
         buttonMusic.setScale(0.4)
         buttonMusic.name = "music"
         buttonMusic.label.isHidden = true
         addChild(buttonMusic)
         
-        let buttonSound = ButtonNode(titled: nil, backgroundName: "sound")
+        let backgroundNameForSound = isSound == true ? "sound" : "nosound"
+        
+        let buttonSound = ButtonNode(titled: nil, backgroundName: backgroundNameForSound)
         buttonSound.position = CGPoint(x: self.frame.midX + 70, y: self.frame.midY)
         buttonSound.setScale(0.4)
         buttonSound.name = "sound"
@@ -43,18 +54,32 @@ class OptionsScene: ParentScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let location = touches.first?.location(in: self) else { return }
         let node = self.atPoint(location)
+        print("Touched node: \(node.name ?? "unknown")")
         
         if node.name == "music" {
-            print("music")
+            isMusic = !isMusic
+            update(node: node as! SKSpriteNode, property: isMusic)
             
         } else if node.name == "sound" {
-            print("sound")
+            isSound = !isSound
+            update(node: node as! SKSpriteNode, property: isSound)
             
         } else if node.name == "back" {
+            
+            gameSettings.isMusic = isMusic
+            gameSettings.isSound = isSound
+            gameSettings.saveGameSettings()
+            
             let transition = SKTransition.crossFade(withDuration: 1.0)
             guard let backScene = backScene else { return }
             backScene.scaleMode = .aspectFill
             self.scene!.view?.presentScene(backScene, transition: transition)
+        }
+    }
+    
+    func update(node: SKSpriteNode, property: Bool) {
+        if let name = node.name {
+            node.texture = property ? SKTexture(imageNamed: name) : SKTexture(imageNamed: "no" + name)
         }
     }
 }

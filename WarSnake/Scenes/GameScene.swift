@@ -38,9 +38,13 @@ final class GameScene: ParentScene {
     
     override func didMove(to view: SKView) {
         
-        if let musicURL = Bundle.main.url(forResource: "backgroundMusic", withExtension: "m4a") {
-            backgroundMusic = SKAudioNode(url: musicURL)
-            addChild(backgroundMusic)
+        gameSettings.loadGameSettings()
+        
+        if gameSettings.isMusic && backgroundMusic == nil {
+            if let musicURL = Bundle.main.url(forResource: "backgroundMusic", withExtension: "m4a") {
+                backgroundMusic = SKAudioNode(url: musicURL)
+                addChild(backgroundMusic)
+            }
         }
         
         self.scene?.isPaused = false
@@ -224,13 +228,21 @@ extension GameScene: SKPhysicsContactDelegate {
             if contact.bodyA.node?.name == "Sprite" {
                 if contact.bodyA.node?.parent != nil {
                     contact.bodyA.node?.removeFromParent()
-                    self.run(SKAction.playSoundFileNamed("biteSound", waitForCompletion: false))
+                    
+                    if gameSettings.isSound {
+                        self.run(SKAction.playSoundFileNamed("biteSound", waitForCompletion: false))
+                    }
+                    
                     lives -= 1
                 }
             } else {
                 if contact.bodyB.node?.parent != nil {
                     contact.bodyB.node?.removeFromParent()
-                    self.run(SKAction.playSoundFileNamed("biteSound", waitForCompletion: false))
+                    
+                    if gameSettings.isSound {
+                        self.run(SKAction.playSoundFileNamed("biteSound", waitForCompletion: false))
+                    }
+                    
                     lives -= 1
                 }
             }
@@ -248,7 +260,10 @@ extension GameScene: SKPhysicsContactDelegate {
             
             if lives == 0 {
                 self.removeAllActions()
-                self.run(SKAction.playSoundFileNamed("gameOverSound", waitForCompletion: false))
+                
+                if gameSettings.isSound {
+                    self.run(SKAction.playSoundFileNamed("gameOverSound", waitForCompletion: false))
+                }
                 
                 let wait = SKAction.wait(forDuration: 0.3)
                 let changeScene = SKAction.run {
@@ -258,6 +273,7 @@ extension GameScene: SKPhysicsContactDelegate {
                     self.scene!.view?.presentScene(gameOverScene, transition: transition)
                 }
                 self.run(SKAction.sequence([wait, changeScene]))
+                    
             }
             
         case [.powerUp, .player]: print("powerUp vc player")
@@ -265,24 +281,40 @@ extension GameScene: SKPhysicsContactDelegate {
             if contact.bodyA.node?.parent != nil && contact.bodyB.node?.parent != nil {
                 if contact.bodyA.node?.name == "BluePowerUp" {
                     contact.bodyA.node?.removeFromParent()
-                    self.run(SKAction.playSoundFileNamed("powerUpSound", waitForCompletion: false))
+                    
+                    if gameSettings.isSound {
+                        self.run(SKAction.playSoundFileNamed("powerUpSound", waitForCompletion: false))
+                    }
+                    
                     lives = 3
                     player.bluePowerUp()
                 } else if contact.bodyB.node?.name == "BluePowerUp" {
                     contact.bodyB.node?.removeFromParent()
-                    self.run(SKAction.playSoundFileNamed("powerUpSound", waitForCompletion: false))
+                    
+                    if gameSettings.isSound {
+                        self.run(SKAction.playSoundFileNamed("powerUpSound", waitForCompletion: false))
+                    }
+                    
                     lives = 3
                     player.bluePowerUp()
                 }
                 
                 if contact.bodyA.node?.name == "YellowPowerUp" {
                     contact.bodyA.node?.removeFromParent()
-                    self.run(SKAction.playSoundFileNamed("powerUpSound", waitForCompletion: false))
+                    
+                    if gameSettings.isSound {
+                        self.run(SKAction.playSoundFileNamed("powerUpSound", waitForCompletion: false))
+                    }
+                    
                     lives = 3
                     player.yellowPowerUp()
                 } else if contact.bodyB.node?.name == "YellowPowerUp" {
                     contact.bodyB.node?.removeFromParent()
-                    self.run(SKAction.playSoundFileNamed("powerUpSound", waitForCompletion: false))
+                    
+                    if gameSettings.isSound {
+                        self.run(SKAction.playSoundFileNamed("powerUpSound", waitForCompletion: false))
+                    }
+                    
                     lives = 3
                     player.yellowPowerUp()
                 }
@@ -294,7 +326,11 @@ extension GameScene: SKPhysicsContactDelegate {
             if contact.bodyA.node?.parent != nil && contact.bodyB.node?.parent != nil {
                 contact.bodyA.node?.removeFromParent()
                 contact.bodyB.node?.removeFromParent()
-                self.run(SKAction.playSoundFileNamed("hitSound", waitForCompletion: false))
+                
+                if gameSettings.isSound {
+                    self.run(SKAction.playSoundFileNamed("hitSound", waitForCompletion: false))
+                }
+                
                 hud.score += 5
                 addChild(explosion!)
                 self.run(waitForExplosionAction) {
