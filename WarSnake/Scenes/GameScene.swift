@@ -18,6 +18,9 @@ final class GameScene: ParentScene {
     private let hud = HUD()
     private let screenSize = UIWindow.bounds.size
     
+    private let blueName = "BluePowerUp"
+    private let yellowName = "YellowPowerUp"
+    
     private var lives = 3 {
         didSet {
             switch lives {
@@ -226,7 +229,6 @@ extension GameScene: SKPhysicsContactDelegate {
         
         switch contactCategory {
         case [.enemy, .player]:
-            
             if contact.bodyA.node?.name == "Sprite" {
                 if contact.bodyA.node?.parent != nil {
                     contact.bodyA.node?.removeFromParent()
@@ -273,49 +275,20 @@ extension GameScene: SKPhysicsContactDelegate {
                 self.run(SKAction.sequence([wait, changeScene]))
                     
             }
-            
         case [.powerUp, .player]:
+            guard contact.bodyA.node?.parent != nil,
+                  contact.bodyB.node?.parent != nil
+            else { break }
             
-            if contact.bodyA.node?.parent != nil && contact.bodyB.node?.parent != nil {
-                if contact.bodyA.node?.name == "BluePowerUp" {
-                    contact.bodyA.node?.removeFromParent()
-                    
-                    if gameSettings.isSound {
-                        self.run(SKAction.playSoundFileNamed("powerUpSound", waitForCompletion: false))
-                    }
-                    
-                    lives = 3
-                    player.bluePowerUp()
-                } else if contact.bodyB.node?.name == "BluePowerUp" {
-                    contact.bodyB.node?.removeFromParent()
-                    
-                    if gameSettings.isSound {
-                        self.run(SKAction.playSoundFileNamed("powerUpSound", waitForCompletion: false))
-                    }
-                    
-                    lives = 3
-                    player.bluePowerUp()
-                } else if contact.bodyA.node?.name == "YellowPowerUp" {
-                    contact.bodyA.node?.removeFromParent()
-                    
-                    if gameSettings.isSound {
-                        self.run(SKAction.playSoundFileNamed("powerUpSound", waitForCompletion: false))
-                    }
-                    
-                    lives += 1
-                    player.yellowPowerUp()
-                } else if contact.bodyB.node?.name == "YellowPowerUp" {
-                    contact.bodyB.node?.removeFromParent()
-                    
-                    if gameSettings.isSound {
-                        self.run(SKAction.playSoundFileNamed("powerUpSound", waitForCompletion: false))
-                    }
-                    
-                    lives += 3
-                    player.yellowPowerUp()
-                }
+            if let bodyA = contact.bodyA.node?.name,
+               bodyA == blueName || bodyA == yellowName {
+                updateLivesAndFlashPowerUp(name: bodyA)
+                contact.bodyA.node?.removeFromParent()
+            } else if let bodyB = contact.bodyB.node?.name,
+                      bodyB == blueName || bodyB == yellowName {
+                updateLivesAndFlashPowerUp(name: bodyB)
+                contact.bodyB.node?.removeFromParent()
             }
-            
         case [.enemy, .shot]:
             
             if contact.bodyA.node?.parent != nil && contact.bodyB.node?.parent != nil {
@@ -334,6 +307,31 @@ extension GameScene: SKPhysicsContactDelegate {
             }
             
         default: preconditionFailure("Unable to detect collision category")
+        }
+    }
+    
+    private func updateLivesAndFlashPowerUp(name: String?) {
+        guard let name = name else { return }
+        
+        if gameSettings.isSound {
+            run(SKAction.playSoundFileNamed(
+                "powerUpSound",
+                waitForCompletion: false
+            ))
+        }
+        
+        switch name {
+        case blueName:
+            lives = 3
+            player.bluePowerUp()
+        case yellowName:
+            if lives < 3 {
+                lives += 1
+            }
+            
+            player.yellowPowerUp()
+        default:
+            break
         }
     }
 }
