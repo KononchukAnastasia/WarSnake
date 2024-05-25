@@ -7,7 +7,9 @@
 
 import SpriteKit
 
-class HUD: SKNode {
+final class HUD: SKNode {
+    
+    // MARK: - Public properties
     let scoreBackground = SKSpriteNode(imageNamed: "scores")
     let scoreLabel = SKLabelNode(text: "0")
     var score: Int = 0 {
@@ -20,6 +22,7 @@ class HUD: SKNode {
     let life2 = SKSpriteNode(imageNamed: "life")
     let life3 = SKSpriteNode(imageNamed: "life")
     
+    // MARK: - Public methods
     func configureUI(screenSize: CGSize) {
         scoreBackground.xScale = 0.4
         scoreBackground.yScale = 0.3

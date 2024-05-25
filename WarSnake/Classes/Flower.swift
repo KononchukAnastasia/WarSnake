@@ -10,6 +10,14 @@ import GameplayKit
 
 final class Flower: SKSpriteNode {
     
+    // MARK: - Private static properties
+    private static var randomScaleFactor: CGFloat {
+        let distribution =  GKRandomDistribution(lowestValue: 1, highestValue: 10)
+        let randomNumber = CGFloat(distribution.nextInt()) / 100
+        return randomNumber
+    }
+    
+    // MARK: - Public static methods
     static func populateFlower(at point: CGPoint?) -> Flower {
         let flowerImageName = configureFlowerName()
         let flower = Flower(imageNamed: flowerImageName)
@@ -24,6 +32,7 @@ final class Flower: SKSpriteNode {
         return flower
     }
     
+    // MARK: - Private static methods
     private static func randomPoint() -> CGPoint {
         let screen = UIWindow.bounds
         let distribution =  GKRandomDistribution(lowestValue: Int(screen.size.height) + 100, highestValue: Int(screen.size.height) + 200)
@@ -39,12 +48,6 @@ final class Flower: SKSpriteNode {
         return imageName
     }
     
-    private static var randomScaleFactor: CGFloat {
-        let distribution =  GKRandomDistribution(lowestValue: 1, highestValue: 10)
-        let randomNumber = CGFloat(distribution.nextInt()) / 100
-        return randomNumber
-    }
-    
     private static func rotateForRandomAngle() -> SKAction {
         let distribution =  GKRandomDistribution(lowestValue: 0, highestValue: 360)
         let randomNumber = CGFloat(distribution.nextInt())
@@ -52,7 +55,6 @@ final class Flower: SKSpriteNode {
     }
     
     private static func move(from point: CGPoint) -> SKAction {
-        
         let movePoint = CGPoint(x: point.x, y: point.y - UIWindow.bounds.height - 400)
         let moveDistance = point.y + UIWindow.bounds.height + 400
         let movementSpeed: CGFloat = 100.0

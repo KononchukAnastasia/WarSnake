@@ -7,7 +7,9 @@
 
 import SpriteKit
 
-class MenuScene: ParentScene {
+final class MenuScene: ParentScene {
+    
+    // MARK: - Override methods
     override func didMove(to view: SKView) {
         
         if !Assets.shared.isLoaded {
@@ -51,6 +53,7 @@ class MenuScene: ParentScene {
             optionScene.backScene = self
             optionScene.scaleMode = .aspectFill
             self.scene!.view?.presentScene(optionScene, transition: transition)
+            
         } else if node.name == "best" {
             let transition = SKTransition.crossFade(withDuration: 1.0)
             let bestScene = BestScene(size: self.size)

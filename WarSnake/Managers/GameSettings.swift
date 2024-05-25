@@ -7,8 +7,9 @@
 
 import UIKit
 
-class GameSettings: NSObject {
+final class GameSettings: NSObject {
 
+    // MARK: - Public properties
     let ud = UserDefaults.standard
     
     var isMusic = true
@@ -17,10 +18,11 @@ class GameSettings: NSObject {
     let musicKey = "music"
     let soundKey = "sound"
     
+    let highScoreKey = "highScore"
     var highScore: [Int] = []
     var currentScore = 0
-    let highScoreKey = "highScore"
 
+    // MARK: Initializers
     override init() {
         super.init()
         
@@ -28,6 +30,7 @@ class GameSettings: NSObject {
         loadScores()
     }
     
+    // MARK: - Public methods
     func saveScores() {
         highScore.append(currentScore)
         highScore = Array(highScore.sorted { $0 > $1}.prefix(3))

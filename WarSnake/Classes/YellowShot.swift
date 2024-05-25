@@ -7,8 +7,9 @@
 
 import SpriteKit
 
-class YellowShot: Shot {
+final class YellowShot: Shot {
 
+    // MARK: Initializers
     init() {
         let textureAtlas = Assets.shared.yellowShotAtlas
         super.init(textureAtlas: textureAtlas)

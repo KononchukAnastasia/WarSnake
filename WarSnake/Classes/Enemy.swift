@@ -7,11 +7,15 @@
 
 import SpriteKit
 
-class Enemy: SKSpriteNode {
+final class Enemy: SKSpriteNode {
 
+    // MARK: - Static properties
     static var textureAtlas: SKTextureAtlas?
+    
+    // MARK: - Public properties
     var enemyTexture: SKTexture!
     
+    // MARK: Initializers
     init(enemyTexture: SKTexture) {
         let texture = enemyTexture
         super.init(texture: texture, color: .clear, size: CGSize(width: 266, height: 280))
@@ -27,6 +31,11 @@ class Enemy: SKSpriteNode {
         self.physicsBody?.contactTestBitMask = BitMaskCategory.player.rawValue | BitMaskCategory.shot.rawValue
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Public methods
     func flySpiral() {
         
         let screenSize = UIWindow.bounds
@@ -51,12 +60,9 @@ class Enemy: SKSpriteNode {
         let groupMovement = SKAction.group([foreverAsideMovement, forwardMovement])
         self.run(groupMovement)
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
 
+// MARK: - Enum
 enum EnemyDirection: Int {
     case left = 0
     case right

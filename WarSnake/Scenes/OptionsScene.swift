@@ -7,11 +7,13 @@
 
 import SpriteKit
 
-class OptionsScene: ParentScene {
+final class OptionsScene: ParentScene {
     
+    // MARK: - Public properties
     var isMusic: Bool!
     var isSound: Bool!
     
+    // MARK: - Override methods
     override func didMove(to view: SKView) {
         
         isMusic = gameSettings.isMusic

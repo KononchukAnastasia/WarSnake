@@ -7,8 +7,9 @@
 
 import SpriteKit
 
-class ButtonNode: SKSpriteNode {
+final class ButtonNode: SKSpriteNode {
     
+    // MARK: - Public properties
     let label: SKLabelNode = {
         let l = SKLabelNode(text: "")
         l.fontColor = UIColor(red: 219 / 255, green: 226 / 255, blue: 215 / 255, alpha: 1.0)
@@ -20,6 +21,7 @@ class ButtonNode: SKSpriteNode {
         return l
     }()
     
+    // MARK: Initializers
     init(titled title: String?, backgroundName: String) {
         let texture = SKTexture(imageNamed: backgroundName)
         super.init(texture: texture, color: . clear, size: texture.size())

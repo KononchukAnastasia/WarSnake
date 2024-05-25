@@ -9,11 +9,14 @@ import SpriteKit
 import CoreMotion
 
 final class PlayerSnake: SKSpriteNode {
+    
+    // MARK: - Public properties
     let motionManager = CMMotionManager()
     var xAcceleration: CGFloat = 0
     let screenSize = CGSize(width: UIWindow.bounds.width, height: UIWindow.bounds.height)
     var moveTextureArrayAnimation = [SKTexture]()
     
+    // MARK: - Public static methods
     static func populate(at point: CGPoint) -> PlayerSnake {
         let atlas = Assets.shared.playerSnakeAtlas
         let playerSnakeTexture = atlas.textureNamed("snake4")
@@ -31,6 +34,7 @@ final class PlayerSnake: SKSpriteNode {
         return playerSnake
     }
     
+    // MARK: - Public methods
     func checkPozition() {
         self.position.x += xAcceleration * 50
         
@@ -63,6 +67,23 @@ final class PlayerSnake: SKSpriteNode {
         }
     }
     
+    func yellowPowerUp() {
+        let colorAction = SKAction.colorize(with: .orange, colorBlendFactor: 1.0, duration: 0.2)
+        let uncolorAction = SKAction.colorize(with: .orange, colorBlendFactor: 0.0, duration: 0.2)
+        let sequenceAction = SKAction.sequence([colorAction, uncolorAction])
+        let repeatAction = SKAction.repeat(sequenceAction, count: 5)
+        self.run(repeatAction)
+    }
+    
+    func bluePowerUp() {
+        let colorAction = SKAction.colorize(with: .systemCyan, colorBlendFactor: 1.0, duration: 0.2)
+        let uncolorAction = SKAction.colorize(with: .systemCyan, colorBlendFactor: 0.0, duration: 0.2)
+        let sequenceAction = SKAction.sequence([colorAction, uncolorAction])
+        let repeatAction = SKAction.repeat(sequenceAction, count: 5)
+        self.run(repeatAction)
+    }
+    
+    // MARK: - Private methods
     private func playingAnimationFillArray(completion: @escaping () -> Void) {
         SKTextureAtlas.preloadTextureAtlases([SKTextureAtlas(named: "playerSnake")]) { [unowned self] in
             self.moveTextureArrayAnimation = {
@@ -80,21 +101,5 @@ final class PlayerSnake: SKSpriteNode {
                 return array
             }()
         }
-    }
-    
-    func yellowPowerUp() {
-        let colorAction = SKAction.colorize(with: .orange, colorBlendFactor: 1.0, duration: 0.2)
-        let uncolorAction = SKAction.colorize(with: .orange, colorBlendFactor: 0.0, duration: 0.2)
-        let sequenceAction = SKAction.sequence([colorAction, uncolorAction])
-        let repeatAction = SKAction.repeat(sequenceAction, count: 5)
-        self.run(repeatAction)
-    }
-    
-    func bluePowerUp() {
-        let colorAction = SKAction.colorize(with: .systemCyan, colorBlendFactor: 1.0, duration: 0.2)
-        let uncolorAction = SKAction.colorize(with: .systemCyan, colorBlendFactor: 0.0, duration: 0.2)
-        let sequenceAction = SKAction.sequence([colorAction, uncolorAction])
-        let repeatAction = SKAction.repeat(sequenceAction, count: 5)
-        self.run(repeatAction)
     }
 }

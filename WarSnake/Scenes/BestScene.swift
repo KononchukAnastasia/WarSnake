@@ -7,10 +7,12 @@
 
 import SpriteKit
 
-class BestScene: ParentScene {
+final class BestScene: ParentScene {
     
+    // MARK: - Public properties
     var places: [Int]!
     
+    // MARK: - Override methods
     override func didMove(to view: SKView) {
         
         gameSettings.loadScores()

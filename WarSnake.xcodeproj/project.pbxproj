@@ -180,8 +180,8 @@
 			isa = PBXGroup;
 			children = (
 				B55B4D1B2BFDD1EA005A1055 /* ParentScene.swift */,
-				B507D11C2BF8BF9B00BD1C15 /* MenuScene.swift */,
 				B5ABEE8C2BF2385F00756558 /* GameScene.swift */,
+				B507D11C2BF8BF9B00BD1C15 /* MenuScene.swift */,
 				B55B4D172BFCCF52005A1055 /* PauseScene.swift */,
 				B55B4D1D2BFDD5A1005A1055 /* OptionsScene.swift */,
 				B55B4D1F2BFDE788005A1055 /* BestScene.swift */,

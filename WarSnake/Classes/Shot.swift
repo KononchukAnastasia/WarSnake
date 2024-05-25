@@ -9,13 +9,16 @@ import SpriteKit
 
 class Shot: SKSpriteNode {
 
+    // MARK: - Public properties
     let screenSize = UIWindow.bounds
     
+    // MARK: - Private properties
     private let initialSize = CGSize(width: 187, height: 237)
     private let textureAtlas: SKTextureAtlas!
     private var textureNameBeginWith = ""
     private var animationSpriteArray = [SKTexture]()
     
+    // MARK: Initializers
     init(textureAtlas: SKTextureAtlas) {
         self.textureAtlas = textureAtlas
         let textureName = textureAtlas.textureNames.sorted()[0]
@@ -37,6 +40,7 @@ class Shot: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public methods
     func startMovement() {
         performRotation()
         
@@ -44,6 +48,7 @@ class Shot: SKSpriteNode {
         self.run(moveForward)
     }
     
+    // MARK: - Private methods
     private func performRotation() {
         for i in 1...32 {
             let number = String(format: "%d", i)

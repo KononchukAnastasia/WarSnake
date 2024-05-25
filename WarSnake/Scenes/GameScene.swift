@@ -10,11 +10,14 @@ import GameplayKit
 
 final class GameScene: ParentScene {
     
+    // MARK: - Public properties
     var backgroundMusic: SKAudioNode!
     
+    // MARK: - Private properties
     private var player: PlayerSnake!
     private let hud = HUD()
     private let screenSize = UIWindow.bounds.size
+    
     private var lives = 3 {
         didSet {
             switch lives {
@@ -36,6 +39,7 @@ final class GameScene: ParentScene {
         }
     }
     
+    // MARK: - Initialization
     override func didMove(to view: SKView) {
         
         gameSettings.loadGameSettings()
@@ -64,6 +68,7 @@ final class GameScene: ParentScene {
         createHUD()
     }
     
+    // MARK: - Private methods
     private func createHUD() {
         addChild(hud)
         hud.configureUI(screenSize: screenSize)
@@ -74,7 +79,6 @@ final class GameScene: ParentScene {
         let spawnSpiralAction = SKAction.run { [unowned self] in
             self.spawnSpiralOfEnemies()
         }
-        
         self.run(SKAction.repeatForever(SKAction.sequence([waitAction, spawnSpiralAction])))
     }
     
@@ -82,7 +86,6 @@ final class GameScene: ParentScene {
         let enemyTextureAtlas1 = Assets.shared.enemy1Atlas
         let enemyTextureAtlas2 = Assets.shared.enemy2Atlas
            SKTextureAtlas.preloadTextureAtlases([enemyTextureAtlas1, enemyTextureAtlas2]) { [unowned self] in
-                
                let randomNumber = Int(arc4random_uniform(2))
                let arrayOfAtlases = [enemyTextureAtlas1, enemyTextureAtlas2]
                let textureAtlas = arrayOfAtlases[randomNumber]
@@ -151,13 +154,19 @@ final class GameScene: ParentScene {
         let flower2 = Flower.populateFlower(at: CGPoint(x: self.size.width - 100, y: self.size.height - 200))
         self.addChild(flower2)
         
-        
         player = PlayerSnake.populate(at: CGPoint(x: screen.size.width / 2, y: 90))
         self.addChild(player)
     }
     
+    private func playerFire() {
+        let shot = YellowShot()
+        shot.position = CGPoint(x: self.player.position.x, y: self.player.position.y + 40)
+        shot.startMovement()
+        self.addChild(shot)
+    }
+    
+    // MARK: - Override methods
     override func didSimulatePhysics() {
-        
         player.checkPozition()
         
         enumerateChildNodes(withName: "Sprite") { (node, stop) in
@@ -185,13 +194,6 @@ final class GameScene: ParentScene {
         }
     }
     
-    private func playerFire() {
-        let shot = YellowShot()
-        shot.position = CGPoint(x: self.player.position.x, y: self.player.position.y + 40)
-        shot.startMovement()
-        self.addChild(shot)
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let location = touches.first?.location(in: self) else { return }
         let node = self.atPoint(location)
@@ -209,10 +211,10 @@ final class GameScene: ParentScene {
     }
 }
 
+// MARK: - SKPhysicsContactDelegate
 extension GameScene: SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
-        
         let explosion = SKEmitterNode(fileNamed: "EnemyExplosion")
         let contactPoint = contact.contactPoint
         explosion?.position = contactPoint
@@ -223,7 +225,7 @@ extension GameScene: SKPhysicsContactDelegate {
         let contactCategory: BitMaskCategory = [contact.bodyA.category, contact.bodyB.category]
         
         switch contactCategory {
-        case [.enemy, .player]: print("enemy vc player")
+        case [.enemy, .player]:
             
             if contact.bodyA.node?.name == "Sprite" {
                 if contact.bodyA.node?.parent != nil {
@@ -250,16 +252,8 @@ extension GameScene: SKPhysicsContactDelegate {
             self.run(waitForExplosionAction) {
                 explosion?.removeFromParent()
             }
-//            
-//            if lives == 0 {
-//                let gameOverScene = GameOverScene(size: self.size)
-//                gameOverScene.scaleMode = .aspectFill
-//                let transition = SKTransition.doorsCloseVertical(withDuration: 1.0)
-//                self.scene!.view?.presentScene(gameOverScene, transition: transition)
-//            }
             
             if lives == 0 {
-                
                 gameSettings.currentScore = hud.score
                 gameSettings.saveScores()
                 
@@ -280,7 +274,7 @@ extension GameScene: SKPhysicsContactDelegate {
                     
             }
             
-        case [.powerUp, .player]: print("powerUp vc player")
+        case [.powerUp, .player]:
             
             if contact.bodyA.node?.parent != nil && contact.bodyB.node?.parent != nil {
                 if contact.bodyA.node?.name == "BluePowerUp" {
@@ -301,16 +295,14 @@ extension GameScene: SKPhysicsContactDelegate {
                     
                     lives = 3
                     player.bluePowerUp()
-                }
-                
-                if contact.bodyA.node?.name == "YellowPowerUp" {
+                } else if contact.bodyA.node?.name == "YellowPowerUp" {
                     contact.bodyA.node?.removeFromParent()
                     
                     if gameSettings.isSound {
                         self.run(SKAction.playSoundFileNamed("powerUpSound", waitForCompletion: false))
                     }
                     
-                    lives = 3
+                    lives += 1
                     player.yellowPowerUp()
                 } else if contact.bodyB.node?.name == "YellowPowerUp" {
                     contact.bodyB.node?.removeFromParent()
@@ -319,13 +311,12 @@ extension GameScene: SKPhysicsContactDelegate {
                         self.run(SKAction.playSoundFileNamed("powerUpSound", waitForCompletion: false))
                     }
                     
-                    lives = 3
+                    lives += 3
                     player.yellowPowerUp()
                 }
-                
             }
             
-        case [.enemy, .shot]: print("enemy vc shot")
+        case [.enemy, .shot]:
             
             if contact.bodyA.node?.parent != nil && contact.bodyB.node?.parent != nil {
                 contact.bodyA.node?.removeFromParent()
@@ -344,9 +335,5 @@ extension GameScene: SKPhysicsContactDelegate {
             
         default: preconditionFailure("Unable to detect collision category")
         }
-    }
-    
-    func didEnd(_ contact: SKPhysicsContact) {
-        print("print")
     }
 }

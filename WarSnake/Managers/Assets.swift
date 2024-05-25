@@ -7,9 +7,14 @@
 
 import SpriteKit
 
-class Assets {
+final class Assets {
+    
+    // MARK: Shared Instance
     static let shared = Assets()
+    
+    // MARK: - Public properties
     var isLoaded = false
+    
     let yellowShotAtlas = SKTextureAtlas(named: "YellowShot")
     let enemy1Atlas = SKTextureAtlas(named: "Enemy1")
     let enemy2Atlas = SKTextureAtlas(named: "Enemy2")
@@ -17,6 +22,7 @@ class Assets {
     let bluePowerUpAtlas = SKTextureAtlas(named: "BluePowerUp")
     let playerSnakeAtlas = SKTextureAtlas(named: "playerSnake")
     
+    // MARK: - Public methods
     func preloadAssets() {
         yellowShotAtlas.preload { print("yellowShotAtlas preloaded")}
         enemy1Atlas.preload { print("enemy1Atlas preloaded")}

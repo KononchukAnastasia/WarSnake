@@ -7,8 +7,9 @@
 
 import SpriteKit
 
-class GameOverScene: ParentScene {
+final class GameOverScene: ParentScene {
     
+    // MARK: - Override methods
     override func didMove(to view: SKView) {
         
         let image = SKSpriteNode(imageNamed: "snake_crawl")

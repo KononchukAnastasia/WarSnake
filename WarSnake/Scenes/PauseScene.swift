@@ -7,8 +7,9 @@
 
 import SpriteKit
 
-class PauseScene: ParentScene {
+final class PauseScene: ParentScene {
     
+    // MARK: - Override methods
     override func didMove(to view: SKView) {
         
         let image = SKSpriteNode(imageNamed: "snake_crawl")

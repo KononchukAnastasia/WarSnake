@@ -7,8 +7,9 @@
 
 import SpriteKit
 
-class BluePowerUp: PowerUp {
+final class BluePowerUp: PowerUp {
     
+    // MARK: Initializers
     init() {
         let textureAtlas = Assets.shared.bluePowerUpAtlas
         super.init(textureAtlas: textureAtlas)

@@ -9,11 +9,14 @@ import SpriteKit
 
 class PowerUp: SKSpriteNode {
 
+    // MARK: - Private properties
     private let initialSize = CGSize(width: 52, height: 52)
     private let textureAtlas: SKTextureAtlas!
+    
     private var textureNameBeginWith = ""
     private var animationSpriteArray = [SKTexture]()
     
+    // MARK: Initializers
     init(textureAtlas: SKTextureAtlas) {
         self.textureAtlas = textureAtlas
         let textureName = textureAtlas.textureNames.sorted()[0]
@@ -35,6 +38,7 @@ class PowerUp: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public methods
     func startMovement() {
         performRotation()
         
@@ -42,6 +46,7 @@ class PowerUp: SKSpriteNode {
         self.run(moveForward)
     }
     
+    // MARK: - Private methods
     private func performRotation() {
         for i in 1...6 {
             let number = String(format: "%d", i)
