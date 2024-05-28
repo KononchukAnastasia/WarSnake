@@ -12,11 +12,7 @@ final class PauseScene: ParentScene {
     // MARK: - Override methods
     override func didMove(to view: SKView) {
         
-        let image = SKSpriteNode(imageNamed: "snake_crawl")
-        image.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 228)
-        image.setScale(0.6)
-        self.addChild(image)
-        
+        addImage(named: "snake_crawl", at: CGPoint(x: self.frame.midX, y: self.frame.midY + 228))
         setHeader(withName: "pause", andBackground: "scores")
         
         let titles = ["restart", "options", "resume"]

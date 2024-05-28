@@ -17,11 +17,7 @@ final class MenuScene: ParentScene {
             Assets.shared.isLoaded = true
         }
         
-        let image = SKSpriteNode(imageNamed: "snake")
-        image.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 250)
-        image.setScale(0.6)
-        self.addChild(image)
-        
+        addImage(named: "snake", at: CGPoint(x: self.frame.midX, y: self.frame.midY + 250))
         setHeader(withName: "war   snake", andBackground: "scores")
         
         let titles = ["play", "options", "best"]

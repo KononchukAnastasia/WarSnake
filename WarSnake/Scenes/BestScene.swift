@@ -17,12 +17,7 @@ final class BestScene: ParentScene {
         
         gameSettings.loadScores()
         places = gameSettings.highScore
-        
-        let image = SKSpriteNode(imageNamed: "snake_crawl")
-        image.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 228)
-        image.setScale(0.6)
-        self.addChild(image)
-        
+        addImage(named: "snake_crawl", at: CGPoint(x: self.frame.midX, y: self.frame.midY + 228))
         setHeader(withName: "best", andBackground: "scores")
         
         let titles = ["back"]

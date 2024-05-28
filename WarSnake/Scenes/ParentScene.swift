@@ -24,6 +24,13 @@ class ParentScene: SKScene {
         self.addChild(header)
     }
     
+    func addImage(named imageName: String, at position: CGPoint) {
+        let image = SKSpriteNode(imageNamed: imageName)
+        image.position = position
+        image.setScale(0.6)
+        self.addChild(image)
+    }
+    
     // MARK: Initializers
     override init(size: CGSize) {
         super.init(size: size)

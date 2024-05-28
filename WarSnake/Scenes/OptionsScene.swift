@@ -18,12 +18,7 @@ final class OptionsScene: ParentScene {
         
         isMusic = gameSettings.isMusic
         isSound = gameSettings.isSound
-        
-        let image = SKSpriteNode(imageNamed: "snake_crawl")
-        image.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 228)
-        image.setScale(0.6)
-        self.addChild(image)
-        
+        addImage(named: "snake_crawl", at: CGPoint(x: self.frame.midX, y: self.frame.midY + 228))
         setHeader(withName: "options", andBackground: "scores")
         
         let backgroundNameForMusic = isMusic == true ? "music" : "nomusic"
