@@ -29,7 +29,10 @@ final class BestScene: ParentScene {
         
         for (index, title) in titles.enumerated() {
             let button = ButtonNode(titled: title, backgroundName: "scores")
-            button.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 200 + CGFloat(100 * index))
+            button.position = CGPoint(
+                x: self.frame.midX,
+                y: self.frame.midY - 200 + CGFloat(100 * index)
+            )
             button.yScale = 0.5
             button.xScale = 0.4
             button.name = title
@@ -39,10 +42,15 @@ final class BestScene: ParentScene {
         
         for (index, value) in places.enumerated() {
             let l = SKLabelNode(text: value.description)
-            l.fontColor = UIColor(red: 219 / 255, green: 226 / 255, blue: 215 / 255, alpha: 1.0)
+            l.fontColor = UIColor(
+                red: 219 / 255, green: 226 / 255, blue: 215 / 255, alpha: 1.0
+            )
             l.fontName = "AmericanTypewriter-Bold"
             l.fontSize = 30
-            l.position = CGPoint(x: self.frame.midX, y: self.frame.midY - CGFloat(index * 60))
+            l.position = CGPoint(
+                x: self.frame.midX,
+                y: self.frame.midY - CGFloat(index * 60)
+            )
             addChild(l)
         }
     }

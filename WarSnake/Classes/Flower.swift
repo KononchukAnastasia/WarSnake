@@ -35,27 +35,46 @@ final class Flower: SKSpriteNode {
     // MARK: - Private static methods
     private static func randomPoint() -> CGPoint {
         let screen = UIWindow.bounds
-        let distribution =  GKRandomDistribution(lowestValue: Int(screen.size.height) + 100, highestValue: Int(screen.size.height) + 200)
+        let distribution =  GKRandomDistribution(
+            lowestValue: Int(screen.size.height) + 100, 
+            highestValue: Int(screen.size.height) + 200
+        )
         let y = CGFloat(distribution.nextInt())
-        let x = CGFloat(GKRandomSource.sharedRandom().nextInt(upperBound: Int(screen.size.width)))
+        let x = CGFloat(
+            GKRandomSource.sharedRandom().nextInt(
+                upperBound: Int(screen.size.width)
+            )
+        )
         return CGPoint(x: x, y: y)
     }
     
     private static func configureFlowerName() -> String {
-        let distribution =  GKRandomDistribution(lowestValue: 1, highestValue: 9)
+        let distribution =  GKRandomDistribution(
+            lowestValue: 1,
+            highestValue: 9
+        )
         let randomNumber = distribution.nextInt()
         let imageName = "flower" + "\(randomNumber)"
         return imageName
     }
     
     private static func rotateForRandomAngle() -> SKAction {
-        let distribution =  GKRandomDistribution(lowestValue: 0, highestValue: 360)
+        let distribution =  GKRandomDistribution(
+            lowestValue: 0,
+            highestValue: 360
+        )
         let randomNumber = CGFloat(distribution.nextInt())
-        return SKAction.rotate(toAngle: randomNumber * CGFloat(Double.pi / 180), duration: 0)
+        return SKAction.rotate(
+            toAngle: randomNumber * CGFloat(Double.pi / 180),
+            duration: 0
+        )
     }
     
     private static func move(from point: CGPoint) -> SKAction {
-        let movePoint = CGPoint(x: point.x, y: point.y - UIWindow.bounds.height - 400)
+        let movePoint = CGPoint(
+            x: point.x,
+            y: point.y - UIWindow.bounds.height - 400
+        )
         let moveDistance = point.y + UIWindow.bounds.height + 400
         let movementSpeed: CGFloat = 100.0
         let duration = moveDistance / movementSpeed

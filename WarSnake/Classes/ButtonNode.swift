@@ -12,7 +12,9 @@ final class ButtonNode: SKSpriteNode {
     // MARK: - Public properties
     let label: SKLabelNode = {
         let l = SKLabelNode(text: "")
-        l.fontColor = UIColor(red: 219 / 255, green: 226 / 255, blue: 215 / 255, alpha: 1.0)
+        l.fontColor = UIColor(
+            red: 219 / 255, green: 226 / 255, blue: 215 / 255, alpha: 1.0
+        )
         l.fontName = "AmericanTypewriter-Bold"
         l.fontSize = 50
         l.horizontalAlignmentMode = .center

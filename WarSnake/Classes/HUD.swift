@@ -10,20 +10,25 @@ import SpriteKit
 final class HUD: SKNode {
     
     // MARK: - Public properties
-    let scoreBackground = SKSpriteNode(imageNamed: "scores")
-    let scoreLabel = SKLabelNode(text: "0")
+    let life1 = SKSpriteNode(imageNamed: "life")
+    let life2 = SKSpriteNode(imageNamed: "life")
+    let life3 = SKSpriteNode(imageNamed: "life")
+    
     var score: Int = 0 {
         didSet {
             scoreLabel.text = score.description
         }
     }
-    let menuButton = SKSpriteNode(imageNamed: "menu")
-    let life1 = SKSpriteNode(imageNamed: "life")
-    let life2 = SKSpriteNode(imageNamed: "life")
-    let life3 = SKSpriteNode(imageNamed: "life")
+    
+    // MARK: - Private properties
+    private let scoreBackground = SKSpriteNode(imageNamed: "scores")
+    private let scoreLabel = SKLabelNode(text: "0")
+    private let menuButton = SKSpriteNode(imageNamed: "menu")
     
     // MARK: - Public methods
     func configureUI(screenSize: CGSize) {
+        let lifes = [life1, life2, life3]
+        
         scoreBackground.xScale = 0.4
         scoreBackground.yScale = 0.3
         scoreBackground.position = CGPoint(
@@ -50,7 +55,6 @@ final class HUD: SKNode {
         menuButton.name = "pause"
         addChild(menuButton)
         
-        let lifes = [life1, life2, life3]
         for (index, life) in lifes.enumerated() {
             life.xScale = 0.08
             life.yScale = 0.08

@@ -10,11 +10,14 @@ import CoreMotion
 
 final class PlayerSnake: SKSpriteNode {
     
-    // MARK: - Public properties
-    let motionManager = CMMotionManager()
-    var xAcceleration: CGFloat = 0
-    let screenSize = CGSize(width: UIWindow.bounds.width, height: UIWindow.bounds.height)
-    var moveTextureArrayAnimation = [SKTexture]()
+    // MARK: - Private properties
+    private let motionManager = CMMotionManager()
+    private var xAcceleration: CGFloat = 0
+    private let screenSize = CGSize(
+        width: UIWindow.bounds.width,
+        height: UIWindow.bounds.height
+    )
+    private var moveTextureArrayAnimation = [SKTexture]()
     
     // MARK: - Public static methods
     static func populate(at point: CGPoint) -> PlayerSnake {
@@ -25,11 +28,17 @@ final class PlayerSnake: SKSpriteNode {
         playerSnake.position = point
         playerSnake.zPosition = 40
 
-        playerSnake.physicsBody = SKPhysicsBody(texture: playerSnakeTexture, alphaThreshold: 0.5, size: playerSnake.size)
+        playerSnake.physicsBody = SKPhysicsBody(
+            texture: playerSnakeTexture,
+            alphaThreshold: 0.5,
+            size: playerSnake.size
+        )
         playerSnake.physicsBody?.isDynamic = false
         playerSnake.physicsBody?.categoryBitMask = BitMaskCategory.player.rawValue
-        playerSnake.physicsBody?.collisionBitMask = BitMaskCategory.enemy.rawValue | BitMaskCategory.powerUp.rawValue
-        playerSnake.physicsBody?.contactTestBitMask = BitMaskCategory.enemy.rawValue | BitMaskCategory.powerUp.rawValue
+        playerSnake.physicsBody?.collisionBitMask = BitMaskCategory.enemy.rawValue 
+        | BitMaskCategory.powerUp.rawValue
+        playerSnake.physicsBody?.contactTestBitMask = BitMaskCategory.enemy.rawValue 
+        | BitMaskCategory.powerUp.rawValue
         
         return playerSnake
     }
@@ -59,7 +68,8 @@ final class PlayerSnake: SKSpriteNode {
         }
         
         motionManager.accelerometerUpdateInterval = 0.2
-        motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { [unowned self] (data, error) in
+        motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { 
+            [unowned self] (data, error) in
             if let data = data {
                 let acceleration = data.acceleration
                 self.xAcceleration = acceleration.x * 0.7 + self.xAcceleration * 0.3
@@ -68,16 +78,34 @@ final class PlayerSnake: SKSpriteNode {
     }
     
     func yellowPowerUp() {
-        let colorAction = SKAction.colorize(with: .orange, colorBlendFactor: 1.0, duration: 0.2)
-        let uncolorAction = SKAction.colorize(with: .orange, colorBlendFactor: 0.0, duration: 0.2)
+        let colorAction = SKAction.colorize(
+            with: .orange,
+            colorBlendFactor: 1.0,
+            duration: 0.2
+        )
+        let uncolorAction = SKAction.colorize(
+            with: .orange,
+            colorBlendFactor: 0.0,
+            duration: 0.2
+        )
         let sequenceAction = SKAction.sequence([colorAction, uncolorAction])
         let repeatAction = SKAction.repeat(sequenceAction, count: 5)
         self.run(repeatAction)
     }
     
     func bluePowerUp() {
-        let colorAction = SKAction.colorize(with: .systemCyan, colorBlendFactor: 1.0, duration: 0.2)
-        let uncolorAction = SKAction.colorize(with: .systemCyan, colorBlendFactor: 0.0, duration: 0.2)
+        let colorAction = SKAction.colorize(
+            with: .systemCyan,
+            colorBlendFactor: 1.0,
+            duration: 0.2
+        )
+        
+        let uncolorAction = SKAction.colorize(
+            with: .systemCyan,
+            colorBlendFactor: 0.0,
+            duration: 0.2
+        )
+        
         let sequenceAction = SKAction.sequence([colorAction, uncolorAction])
         let repeatAction = SKAction.repeat(sequenceAction, count: 5)
         self.run(repeatAction)
@@ -85,7 +113,8 @@ final class PlayerSnake: SKSpriteNode {
     
     // MARK: - Private methods
     private func playingAnimationFillArray(completion: @escaping () -> Void) {
-        SKTextureAtlas.preloadTextureAtlases([SKTextureAtlas(named: "playerSnake")]) { [unowned self] in
+        SKTextureAtlas.preloadTextureAtlases(
+            [SKTextureAtlas(named: "playerSnake")]) { [unowned self] in
             self.moveTextureArrayAnimation = {
                 var array = [SKTexture]()
                 for i in stride(from: 1, through: 8, by: 1) {

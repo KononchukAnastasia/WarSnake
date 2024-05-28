@@ -27,7 +27,11 @@ class PowerUp: SKSpriteNode {
         self.name = "Sprite"
         self.zPosition = 20
         
-        self.physicsBody = SKPhysicsBody(texture: texture, alphaThreshold: 0.5, size: self.size)
+        self.physicsBody = SKPhysicsBody(
+            texture: texture,
+            alphaThreshold: 0.5,
+            size: self.size
+        )
         self.physicsBody?.isDynamic = true
         self.physicsBody?.categoryBitMask = BitMaskCategory.powerUp.rawValue
         self.physicsBody?.collisionBitMask = BitMaskCategory.player.rawValue
@@ -50,11 +54,23 @@ class PowerUp: SKSpriteNode {
     private func performRotation() {
         for i in 1...6 {
             let number = String(format: "%d", i)
-            animationSpriteArray.append(SKTexture(imageNamed: textureNameBeginWith + number.description))
+            
+            animationSpriteArray.append(
+                SKTexture(
+                    imageNamed: textureNameBeginWith + number.description
+                )
+            )
         }
         
-        SKTexture.preload(animationSpriteArray) {
-            let rotation = SKAction.animate(with: self.animationSpriteArray, timePerFrame: 0.05, resize: true, restore: false)
+        SKTexture.preload(animationSpriteArray) { [weak self] in
+            guard let self = self else { return }
+            
+            let rotation = SKAction.animate(
+                with: self.animationSpriteArray,
+                timePerFrame: 0.05, resize: true,
+                restore: false
+            )
+            
             let rotationForever = SKAction.repeatForever(rotation)
             self.run(rotationForever)
         }

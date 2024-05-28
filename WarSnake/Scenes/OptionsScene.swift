@@ -28,8 +28,14 @@ final class OptionsScene: ParentScene {
         
         let backgroundNameForMusic = isMusic == true ? "music" : "nomusic"
         
-        let buttonMusic = ButtonNode(titled: nil, backgroundName: backgroundNameForMusic)
-        buttonMusic.position = CGPoint(x: self.frame.midX - 70, y: self.frame.midY)
+        let buttonMusic = ButtonNode(
+            titled: nil,
+            backgroundName: backgroundNameForMusic
+        )
+        buttonMusic.position = CGPoint(
+            x: self.frame.midX - 70,
+            y: self.frame.midY
+        )
         buttonMusic.setScale(0.4)
         buttonMusic.name = "music"
         buttonMusic.label.isHidden = true
@@ -37,15 +43,24 @@ final class OptionsScene: ParentScene {
         
         let backgroundNameForSound = isSound == true ? "sound" : "nosound"
         
-        let buttonSound = ButtonNode(titled: nil, backgroundName: backgroundNameForSound)
-        buttonSound.position = CGPoint(x: self.frame.midX + 70, y: self.frame.midY)
+        let buttonSound = ButtonNode(
+            titled: nil,
+            backgroundName: backgroundNameForSound
+        )
+        buttonSound.position = CGPoint(
+            x: self.frame.midX + 70,
+            y: self.frame.midY
+        )
         buttonSound.setScale(0.4)
         buttonSound.name = "sound"
         buttonSound.label.isHidden = true
         addChild(buttonSound)
         
         let buttonBack = ButtonNode(titled: "back", backgroundName: "scores")
-        buttonBack.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 100)
+        buttonBack.position = CGPoint(
+            x: self.frame.midX,
+            y: self.frame.midY - 100
+        )
         buttonBack.yScale = 0.5
         buttonBack.xScale = 0.4
         buttonBack.name = "back"
@@ -81,7 +96,9 @@ final class OptionsScene: ParentScene {
     
     func update(node: SKSpriteNode, property: Bool) {
         if let name = node.name {
-            node.texture = property ? SKTexture(imageNamed: name) : SKTexture(imageNamed: "no" + name)
+            node.texture = property 
+            ? SKTexture(imageNamed: name)
+            : SKTexture(imageNamed: "no" + name)
         }
     }
 }

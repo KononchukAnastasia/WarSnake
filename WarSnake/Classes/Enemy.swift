@@ -12,23 +12,33 @@ final class Enemy: SKSpriteNode {
     // MARK: - Static properties
     static var textureAtlas: SKTextureAtlas?
     
-    // MARK: - Public properties
-    var enemyTexture: SKTexture!
+    // MARK: - Private properties
+    private var enemyTexture: SKTexture!
     
     // MARK: Initializers
     init(enemyTexture: SKTexture) {
         let texture = enemyTexture
-        super.init(texture: texture, color: .clear, size: CGSize(width: 266, height: 280))
+        super.init(
+            texture: texture,
+            color: .clear,
+            size: CGSize(width: 266, height: 280)
+        )
         self.xScale = 0.3
         self.yScale = -0.3
         self.zPosition = 20
         self.name = "Sprite"
         
-        self.physicsBody = SKPhysicsBody(texture: texture, alphaThreshold: 0.5, size: self.size)
+        self.physicsBody = SKPhysicsBody(
+            texture: texture,
+            alphaThreshold: 0.5,
+            size: self.size
+        )
         self.physicsBody?.isDynamic = true
         self.physicsBody?.categoryBitMask = BitMaskCategory.enemy.rawValue
-        self.physicsBody?.collisionBitMask = BitMaskCategory.player.rawValue | BitMaskCategory.shot.rawValue
-        self.physicsBody?.contactTestBitMask = BitMaskCategory.player.rawValue | BitMaskCategory.shot.rawValue
+        self.physicsBody?.collisionBitMask = BitMaskCategory.player.rawValue 
+        | BitMaskCategory.shot.rawValue
+        self.physicsBody?.contactTestBitMask = BitMaskCategory.player.rawValue 
+        | BitMaskCategory.shot.rawValue
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -43,9 +53,15 @@ final class Enemy: SKSpriteNode {
         let timeHorizontal: Double = 3
         let timeVertical: Double = 5
         
-        let moveLeft = SKAction.moveTo(x: 50, duration: timeHorizontal)
+        let moveLeft = SKAction.moveTo(
+            x: 50, 
+            duration: timeHorizontal
+        )
         moveLeft.timingMode = .easeInEaseOut
-        let moveRight = SKAction.moveTo(x: screenSize.width - 50, duration: timeHorizontal)
+        let moveRight = SKAction.moveTo(
+            x: screenSize.width - 50,
+            duration: timeHorizontal
+        )
         moveRight.timingMode = .easeInEaseOut
         
         let randomNumber = Int(arc4random_uniform(2))

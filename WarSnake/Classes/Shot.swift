@@ -8,11 +8,9 @@
 import SpriteKit
 
 class Shot: SKSpriteNode {
-
-    // MARK: - Public properties
-    let screenSize = UIWindow.bounds
     
     // MARK: - Private properties
+    private let screenSize = UIWindow.bounds
     private let initialSize = CGSize(width: 187, height: 237)
     private let textureAtlas: SKTextureAtlas!
     private var textureNameBeginWith = ""
@@ -29,7 +27,11 @@ class Shot: SKSpriteNode {
         self.name = "ShotSprite"
         self.zPosition = 30
         
-        self.physicsBody = SKPhysicsBody(texture: texture, alphaThreshold: 0.5, size: self.size)
+        self.physicsBody = SKPhysicsBody(
+            texture: texture,
+            alphaThreshold: 0.5,
+            size: self.size
+        )
         self.physicsBody?.isDynamic = false
         self.physicsBody?.categoryBitMask = BitMaskCategory.shot.rawValue
         self.physicsBody?.collisionBitMask = BitMaskCategory.enemy.rawValue
@@ -52,11 +54,20 @@ class Shot: SKSpriteNode {
     private func performRotation() {
         for i in 1...32 {
             let number = String(format: "%d", i)
-            animationSpriteArray.append(SKTexture(imageNamed: textureNameBeginWith + number.description))
+            animationSpriteArray.append(
+                SKTexture(
+                    imageNamed: textureNameBeginWith + number.description))
         }
         
-        SKTexture.preload(animationSpriteArray) {
-            let rotation = SKAction.animate(with: self.animationSpriteArray, timePerFrame: 0.05, resize: true, restore: false)
+        SKTexture.preload(animationSpriteArray) { [weak self] in
+            guard let self = self else { return }
+            
+            let rotation = SKAction.animate(
+                with: self.animationSpriteArray,
+                timePerFrame: 0.05,
+                resize: true,
+                restore: false
+            )
             let rotationForever = SKAction.repeatForever(rotation)
             self.run(rotationForever)
         }

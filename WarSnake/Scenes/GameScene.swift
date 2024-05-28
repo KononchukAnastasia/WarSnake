@@ -48,7 +48,10 @@ final class GameScene: ParentScene {
         gameSettings.loadGameSettings()
         
         if gameSettings.isMusic && backgroundMusic == nil {
-            if let musicURL = Bundle.main.url(forResource: "backgroundMusic", withExtension: "m4a") {
+            if let musicURL = Bundle.main.url(
+                forResource: "backgroundMusic",
+                withExtension: "m4a"
+            ) {
                 backgroundMusic = SKAudioNode(url: musicURL)
                 addChild(backgroundMusic)
             }
@@ -82,13 +85,17 @@ final class GameScene: ParentScene {
         let spawnSpiralAction = SKAction.run { [unowned self] in
             self.spawnSpiralOfEnemies()
         }
-        self.run(SKAction.repeatForever(SKAction.sequence([waitAction, spawnSpiralAction])))
+        self.run(SKAction.repeatForever(SKAction.sequence(
+            [waitAction, spawnSpiralAction])
+        ))
     }
     
     private func spawnSpiralOfEnemies() {
         let enemyTextureAtlas1 = Assets.shared.enemy1Atlas
         let enemyTextureAtlas2 = Assets.shared.enemy2Atlas
-           SKTextureAtlas.preloadTextureAtlases([enemyTextureAtlas1, enemyTextureAtlas2]) { [unowned self] in
+           SKTextureAtlas.preloadTextureAtlases(
+            [enemyTextureAtlas1, enemyTextureAtlas2]
+           ) { [unowned self] in
                let randomNumber = Int(arc4random_uniform(2))
                let arrayOfAtlases = [enemyTextureAtlas1, enemyTextureAtlas2]
                let textureAtlas = arrayOfAtlases[randomNumber]
@@ -98,7 +105,10 @@ final class GameScene: ParentScene {
                    let textureNames = textureAtlas.textureNames.sorted()
                    let texture = textureAtlas.textureNamed(textureNames[0])
                    let enemy = Enemy(enemyTexture: texture)
-                   enemy.position = CGPoint(x: self.size.width / 2, y: self.size.height + 110)
+                   enemy.position = CGPoint(
+                    x: self.size.width / 2,
+                    y: self.size.height + 110
+                   )
                    self.addChild(enemy)
                    enemy.flySpiral()
                }
@@ -111,12 +121,15 @@ final class GameScene: ParentScene {
        }
     
     private func spawnPowerUp() {
-        let spawnAction = SKAction.run {
+        let spawnAction = SKAction.run { [unowned self] in
             let randomNumber = Int(arc4random_uniform(2))
             let powerUp = randomNumber == 1 ? BluePowerUp() : YellowPowerUp()
             let randomPositionX = arc4random_uniform(UInt32(self.size.width))
             
-            powerUp.position = CGPoint(x: CGFloat(randomPositionX), y: self.size.height + 100)
+            powerUp.position = CGPoint(
+                x: CGFloat(randomPositionX),
+                y: self.size.height + 100
+            )
             powerUp.startMovement()
             self.addChild(powerUp)
         }
@@ -124,17 +137,21 @@ final class GameScene: ParentScene {
         let randomTimeSpawn = Double(arc4random_uniform(11) + 10)
         let waitAction = SKAction.wait(forDuration: randomTimeSpawn)
         
-        self.run(SKAction.repeatForever(SKAction.sequence([spawnAction, waitAction])))
+        self.run(SKAction.repeatForever(SKAction.sequence(
+            [spawnAction, waitAction]
+        )))
     }
     
     private func spawnFlower() {
         let spawnFlowerWait = SKAction.wait(forDuration: 1)
-        let spawnFlowerAction = SKAction.run {
+        let spawnFlowerAction = SKAction.run { [unowned self] in
             let flower = Flower.populateFlower(at: nil)
             self.addChild(flower)
         }
         
-        let spawnFlowerSequence = SKAction.sequence([spawnFlowerWait, spawnFlowerAction])
+        let spawnFlowerSequence = SKAction.sequence(
+            [spawnFlowerWait, spawnFlowerAction]
+        )
         let spawnFlowerForever = SKAction.repeatForever(spawnFlowerSequence)
         run(spawnFlowerForever)
     }
@@ -151,19 +168,31 @@ final class GameScene: ParentScene {
         
         let screen = UIWindow.bounds
             
-        let flower1 = Flower.populateFlower(at: CGPoint(x: 100, y: 200))
+        let flower1 = Flower.populateFlower(at: CGPoint(
+            x: 100,
+            y: 200)
+        )
         self.addChild(flower1)
         
-        let flower2 = Flower.populateFlower(at: CGPoint(x: self.size.width - 100, y: self.size.height - 200))
+        let flower2 = Flower.populateFlower(at: CGPoint(
+            x: self.size.width - 100,
+            y: self.size.height - 200)
+        )
         self.addChild(flower2)
         
-        player = PlayerSnake.populate(at: CGPoint(x: screen.size.width / 2, y: 90))
+        player = PlayerSnake.populate(at: CGPoint(
+            x: screen.size.width / 2,
+            y: 90)
+        )
         self.addChild(player)
     }
     
     private func playerFire() {
         let shot = YellowShot()
-        shot.position = CGPoint(x: self.player.position.x, y: self.player.position.y + 40)
+        shot.position = CGPoint(
+            x: self.player.position.x,
+            y: self.player.position.y + 40
+        )
         shot.startMovement()
         self.addChild(shot)
     }
@@ -225,55 +254,57 @@ extension GameScene: SKPhysicsContactDelegate {
         
         let waitForExplosionAction = SKAction.wait(forDuration: 1)
         
-        let contactCategory: BitMaskCategory = [contact.bodyA.category, contact.bodyB.category]
+        let contactCategory: BitMaskCategory = [
+            contact.bodyA.category,
+            contact.bodyB.category
+        ]
         
         switch contactCategory {
         case [.enemy, .player]:
-            if contact.bodyA.node?.name == "Sprite" {
-                if contact.bodyA.node?.parent != nil {
-                    contact.bodyA.node?.removeFromParent()
-                    
-                    if gameSettings.isSound {
-                        self.run(SKAction.playSoundFileNamed("biteSound", waitForCompletion: false))
-                    }
-                    
-                    lives -= 1
-                }
-            } else {
-                if contact.bodyB.node?.parent != nil {
-                    contact.bodyB.node?.removeFromParent()
-                    
-                    if gameSettings.isSound {
-                        self.run(SKAction.playSoundFileNamed("biteSound", waitForCompletion: false))
-                    }
-                    
-                    lives -= 1
-                }
+            if contact.bodyA.node?.name == "Sprite",
+               contact.bodyA.node?.parent != nil {
+                print("**** enemy A")
+                contact.bodyA.node?.removeFromParent()
+                loseLives()
+            } else if contact.bodyB.node?.parent != nil {
+                print("**** enemy B")
+                contact.bodyB.node?.removeFromParent()
+                loseLives()
             }
+            
             addChild(explosion!)
-            self.run(waitForExplosionAction) {
+            
+            run(waitForExplosionAction) {
                 explosion?.removeFromParent()
             }
             
-            if lives == 0 {
+            if lives == .zero {
                 gameSettings.currentScore = hud.score
                 gameSettings.saveScores()
                 
-                self.removeAllActions()
+                removeAllActions()
                 
                 if gameSettings.isSound {
-                    self.run(SKAction.playSoundFileNamed("gameOverSound", waitForCompletion: false))
+                    playSound("gameOverSound")
                 }
                 
                 let wait = SKAction.wait(forDuration: 0.3)
-                let changeScene = SKAction.run {
+                
+                let changeScene = SKAction.run { [weak self] in
+                    guard let self = self, let scene = scene else { return }
+                    
                     let gameOverScene = GameOverScene(size: self.size)
                     gameOverScene.scaleMode = .aspectFill
-                    let transition = SKTransition.doorsCloseVertical(withDuration: 1.0)
-                    self.scene!.view?.presentScene(gameOverScene, transition: transition)
-                }
-                self.run(SKAction.sequence([wait, changeScene]))
                     
+                    let transition = SKTransition.doorsCloseVertical(withDuration: 1)
+                    
+                    scene.view?.presentScene(
+                        gameOverScene,
+                        transition: transition
+                    )
+                }
+                
+                run(SKAction.sequence([wait, changeScene]))
             }
         case [.powerUp, .player]:
             guard contact.bodyA.node?.parent != nil,
@@ -282,21 +313,22 @@ extension GameScene: SKPhysicsContactDelegate {
             
             if let bodyA = contact.bodyA.node?.name,
                bodyA == blueName || bodyA == yellowName {
-                updateLivesAndFlashPowerUp(name: bodyA)
+                updateLivesAndFlashPlayer(name: bodyA)
                 contact.bodyA.node?.removeFromParent()
             } else if let bodyB = contact.bodyB.node?.name,
                       bodyB == blueName || bodyB == yellowName {
-                updateLivesAndFlashPowerUp(name: bodyB)
+                updateLivesAndFlashPlayer(name: bodyB)
                 contact.bodyB.node?.removeFromParent()
             }
         case [.enemy, .shot]:
             
-            if contact.bodyA.node?.parent != nil && contact.bodyB.node?.parent != nil {
+            if contact.bodyA.node?.parent != nil
+                && contact.bodyB.node?.parent != nil {
                 contact.bodyA.node?.removeFromParent()
                 contact.bodyB.node?.removeFromParent()
                 
                 if gameSettings.isSound {
-                    self.run(SKAction.playSoundFileNamed("hitSound", waitForCompletion: false))
+                    playSound("hitSound")
                 }
                 
                 hud.score += 5
@@ -310,14 +342,11 @@ extension GameScene: SKPhysicsContactDelegate {
         }
     }
     
-    private func updateLivesAndFlashPowerUp(name: String?) {
+    private func updateLivesAndFlashPlayer(name: String?) {
         guard let name = name else { return }
         
         if gameSettings.isSound {
-            run(SKAction.playSoundFileNamed(
-                "powerUpSound",
-                waitForCompletion: false
-            ))
+            playSound("powerUpSound")
         }
         
         switch name {
@@ -333,5 +362,16 @@ extension GameScene: SKPhysicsContactDelegate {
         default:
             break
         }
+    }
+    
+    private func loseLives() {
+        if gameSettings.isSound {
+            playSound("biteSound")
+        }
+        lives -= 1
+    }
+    
+    private func playSound(_ name: String) {
+        run(SKAction.playSoundFileNamed(name, waitForCompletion: false))
     }
 }
