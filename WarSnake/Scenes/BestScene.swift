@@ -23,16 +23,17 @@ final class BestScene: ParentScene {
         let titles = ["back"]
         
         for (index, title) in titles.enumerated() {
-            let button = ButtonNode(titled: title, backgroundName: "scores")
-            button.position = CGPoint(
-                x: self.frame.midX,
-                y: self.frame.midY - 200 + CGFloat(100 * index)
-            )
-            button.yScale = 0.5
-            button.xScale = 0.4
-            button.name = title
+            let button = addButton(
+                title: title,
+                name: title,
+                backgroundName: "scores",
+                at: CGPoint(
+                    x: self.frame.midX,
+                    y: self.frame.midY - 200 + CGFloat(100 * index)
+                ),
+                xScale: 0.4,
+                yScale: 0.5)
             button.label.name = title
-            addChild(button)
         }
         
         for (index, value) in places.enumerated() {

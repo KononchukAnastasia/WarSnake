@@ -23,16 +23,15 @@ final class MenuScene: ParentScene {
         let titles = ["play", "options", "best"]
         
         for (index, title) in titles.enumerated() {
-            let button = ButtonNode(titled: title, backgroundName: "scores")
-            button.position = CGPoint(
-                x: self.frame.midX,
-                y: self.frame.midY - CGFloat(100 * index)
+            let button = addButton(
+                title: title,
+                name: title,
+                backgroundName: "scores",
+                at: CGPoint(x: self.frame.midX, y: self.frame.midY - CGFloat(100 * index)),
+                xScale: 0.4,
+                yScale: 0.5
             )
-            button.yScale = 0.5
-            button.xScale = 0.4
-            button.name = title
             button.label.name = title
-            addChild(button)
         }
     }
     

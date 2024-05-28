@@ -31,6 +31,16 @@ class ParentScene: SKScene {
         self.addChild(image)
     }
     
+    func addButton(title: String?, name: String, backgroundName: String, at position: CGPoint, xScale: CGFloat, yScale: CGFloat) -> ButtonNode {
+        let button = ButtonNode(titled: title, backgroundName: backgroundName)
+        button.name = name
+        button.position = position
+        button.xScale = xScale
+        button.yScale = yScale
+        addChild(button)
+        return button
+    }
+    
     // MARK: Initializers
     override init(size: CGSize) {
         super.init(size: size)

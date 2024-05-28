@@ -22,45 +22,36 @@ final class OptionsScene: ParentScene {
         setHeader(withName: "options", andBackground: "scores")
         
         let backgroundNameForMusic = isMusic == true ? "music" : "nomusic"
-        
-        let buttonMusic = ButtonNode(
-            titled: nil,
-            backgroundName: backgroundNameForMusic
+        let buttonMusic = addButton(
+            title: nil,
+            name: "music",
+            backgroundName: backgroundNameForMusic,
+            at: CGPoint(x: self.frame.midX - 70, y: self.frame.midY),
+            xScale: 0.4,
+            yScale: 0.4
         )
-        buttonMusic.position = CGPoint(
-            x: self.frame.midX - 70,
-            y: self.frame.midY
-        )
-        buttonMusic.setScale(0.4)
-        buttonMusic.name = "music"
         buttonMusic.label.isHidden = true
-        addChild(buttonMusic)
         
         let backgroundNameForSound = isSound == true ? "sound" : "nosound"
-        
-        let buttonSound = ButtonNode(
-            titled: nil,
-            backgroundName: backgroundNameForSound
+        let buttonSound = addButton(
+            title: nil,
+            name: "sound",
+            backgroundName: backgroundNameForSound,
+            at: CGPoint(x: self.frame.midX + 70, y: self.frame.midY),
+            xScale: 0.4,
+            yScale: 0.4
         )
-        buttonSound.position = CGPoint(
-            x: self.frame.midX + 70,
-            y: self.frame.midY
-        )
-        buttonSound.setScale(0.4)
-        buttonSound.name = "sound"
         buttonSound.label.isHidden = true
-        addChild(buttonSound)
         
-        let buttonBack = ButtonNode(titled: "back", backgroundName: "scores")
-        buttonBack.position = CGPoint(
-            x: self.frame.midX,
-            y: self.frame.midY - 100
+        let buttonBack = addButton(
+            title: "back",
+            name: "back",
+            backgroundName: "scores",
+            at: CGPoint(x: self.frame.midX, y: self.frame.midY - 100),
+            xScale: 0.4,
+            yScale: 0.5
         )
-        buttonBack.yScale = 0.5
-        buttonBack.xScale = 0.4
-        buttonBack.name = "back"
         buttonBack.label.name = "back"
-        addChild(buttonBack)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
