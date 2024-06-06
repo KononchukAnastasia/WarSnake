@@ -89,6 +89,8 @@
 		B5ABEEA32BF33D9100756558 /* PlayerSnake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSnake.swift; sourceTree = "<group>"; };
 		B5ABEEA52BF3400400756558 /* playerSnake.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = playerSnake.atlas; sourceTree = SOURCE_ROOT; };
 		B5B9C89E2BF787D4003836AB /* Enemy2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Enemy2.atlas; sourceTree = SOURCE_ROOT; };
+		B5D65A462C11969B00A0ABDE /* demo-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "demo-2.png"; sourceTree = "<group>"; };
+		B5D65A472C11969B00A0ABDE /* demo-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "demo-1.png"; sourceTree = "<group>"; };
 		B5EA22A02BF656DA00E945BE /* BluePowerUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluePowerUp.swift; sourceTree = "<group>"; };
 		B5EA22A22BF6570F00E945BE /* YellowPowerUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellowPowerUp.swift; sourceTree = "<group>"; };
 		B5EA22A42BF759F600E945BE /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
@@ -193,6 +195,8 @@
 		B5ABEE7A2BF2385F00756558 = {
 			isa = PBXGroup;
 			children = (
+				B5D65A472C11969B00A0ABDE /* demo-1.png */,
+				B5D65A462C11969B00A0ABDE /* demo-2.png */,
 				B5ABEE852BF2385F00756558 /* WarSnake */,
 				B5ABEE842BF2385F00756558 /* Products */,
 			);
