@@ -263,11 +263,9 @@ extension GameScene: SKPhysicsContactDelegate {
         case [.enemy, .player]:
             if contact.bodyA.node?.name == "Sprite",
                contact.bodyA.node?.parent != nil {
-                print("**** enemy A")
                 contact.bodyA.node?.removeFromParent()
                 loseLives()
             } else if contact.bodyB.node?.parent != nil {
-                print("**** enemy B")
                 contact.bodyB.node?.removeFromParent()
                 loseLives()
             }
